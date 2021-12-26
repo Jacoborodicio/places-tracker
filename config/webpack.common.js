@@ -6,7 +6,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "../dist"),
         filename: "[name].[contenthash].js",
-        publicPath: "/new-skeleton-webpack/",
+        publicPath: "/code-school/",
         clean: true
     },
     module: {
@@ -17,13 +17,13 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                type: "asset",
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
-            }
+                type: 'asset/resource',
+            },
         ]
     },
     resolve: {
-        extensions: [".js", ".jsx", ".json"]
+        extensions: [".js", ".jsx", ".json"],
     },
     plugins: [
         new CleanWebpackPlugin(),

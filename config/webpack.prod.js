@@ -13,8 +13,11 @@ const productionConfig = {
     module: {
         rules: [
             {
-                use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
                 test: /.(css|sass|scss)$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader", "sass-loader"
+                ],
             },
         ]
     }

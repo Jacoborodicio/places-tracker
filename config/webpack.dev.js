@@ -1,4 +1,3 @@
-const { HotModuleReplacementPlugin } = require("webpack");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const common = require("./webpack.common");
 const {merge} = require("webpack-merge");
