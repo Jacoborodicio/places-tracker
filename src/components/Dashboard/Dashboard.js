@@ -8,7 +8,7 @@ const TopicsPanel = lazy(() => import('./TopicsPanel'));
 const CssGrid = lazy(() => import('../CssGrid/CssGrid'));
 const SpringAnimations = lazy(() => import('../SpringAnimations/SpringAnimations'));
 const DevPlace = lazy(() => import('../DevPlace/DevPlace'));
-
+const Redux = lazy(() => import ('../ReduxComponent/ReduxComponent'));
 const Dashboard = ({width, height}) => {
     const containerProps = {
         dimensions: {height, width},
@@ -29,6 +29,11 @@ const Dashboard = ({width, height}) => {
                 <Route path={'/spring-animations'}>
                     <Suspense fallback={''}>
                         <SpringAnimations/>
+                    </Suspense>
+                </Route>
+                <Route path={'/redux'}>
+                    <Suspense fallback={''}>
+                        <Redux />
                     </Suspense>
                 </Route>
                 <Route path={'/dev-place'}>

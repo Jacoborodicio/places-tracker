@@ -82,6 +82,16 @@ export const mainTopics = [
     },
     {
         id: 9,
+        title: 'Redux',
+        image: './assets/defaultCodeImg.png',
+        imageDescription: 'Redux section image',
+        description: 'Explaining Redux with hooks in newest version',
+        stars: 23, // Number of reputation stars
+        ratio: 3.5, // Global valuation from 0-5
+        link: '/redux'
+    },
+    {
+        id: 10,
         title: 'Developing helper',
         image: './assets/defaultCodeImg.png',
         imageDescription: 'A place to try stuff while developing the rest of Code School',
