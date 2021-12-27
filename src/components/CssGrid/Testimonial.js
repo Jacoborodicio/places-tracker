@@ -2,6 +2,7 @@
 import React from "react";
 import {styled} from "@mui/material";
 import {jsx, css} from "@emotion/react";
+import {testimonialResources} from "../../helpers/constants";
 
 const GlobalContainer = styled('article')`
   font-size: 0.8125rem;
@@ -9,7 +10,7 @@ const GlobalContainer = styled('article')`
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(217 19% 35% / .25);
-  background: top right 10% no-repeat url("../../../public/assets/images/bg-pattern-quotation.svg");
+  background: top right 10% no-repeat url(${testimonialResources["quoteLogo"]});
   
   & > div:first-of-type {
     display: flex;
@@ -83,12 +84,12 @@ const GlobalContainer = styled('article')`
 `;
 
 const Testimonial = ({image, name, position, message, declaration}) => {
-    console.log('INSIDE TESTIMONIAL')
+
     return (
         <GlobalContainer>
             <div>
                 <div>
-                    <img src={image} alt={name}/>
+                    <img src={testimonialResources[image]} alt={name}/>
                 </div>
                 <div>
                     <h2>{name}</h2>
