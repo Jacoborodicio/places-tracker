@@ -2,7 +2,7 @@
 import React, {lazy, Suspense} from 'react';
 import {jsx} from "@emotion/react";
 import {Container} from "./dashboard-styles";
-import {Route, BrowserRouter, Switch} from "react-router-dom";
+import {Route, BrowserRouter} from "react-router-dom";
 
 const TopicsPanel = lazy(() => import('./TopicsPanel'));
 const CssGrid = lazy(() => import('../CssGrid/CssGrid'));
@@ -16,28 +16,26 @@ const Dashboard = ({width, height}) => {
     return (
         <Container {...containerProps}>
             <BrowserRouter>
-                <Switch>
                 <Route exact path={'/'}>
                     <Suspense fallback={''}>
                         <TopicsPanel />
                     </Suspense>
                 </Route>
-                <Route exact path={'/css-grid'}>
+                <Route path={'/css-grid'}>
                     <Suspense fallback={''}>
                         <CssGrid/>
                     </Suspense>
                 </Route>
-                <Route exact path={'/spring-animations'}>
+                <Route path={'/spring-animations'}>
                     <Suspense fallback={''}>
                         <SpringAnimations/>
                     </Suspense>
                 </Route>
-                <Route exact path={'/dev-place'}>
+                <Route path={'/dev-place'}>
                     <Suspense fallback={''}>
                         <DevPlace/>
                     </Suspense>
                 </Route>
-                </Switch>
             </BrowserRouter>
         </Container>
     )

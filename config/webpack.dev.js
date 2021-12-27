@@ -12,11 +12,9 @@ const developConfig = {
         port: 3000,
         static: {
             directory: path.join(__dirname, '../dist'),
-            publicPath: '/'
+            publicPath: '/',
         },
-        historyApiFallback: {
-            index: 'index.html'
-        },
+        historyApiFallback: true,
         compress: true,
         hot: true
         // open: "chrome" // To open the browser directly
