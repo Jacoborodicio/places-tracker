@@ -3,6 +3,7 @@ import {jsx} from "@emotion/react";
 import {Container} from "../Dashboard/dashboard-styles";
 import Recent from "./Recent";
 const Portal = ({width, height}) => {
+    console.log('Inside PORTAL!!!')
     const containerProps = {
         dimensions: {height, width},
     }

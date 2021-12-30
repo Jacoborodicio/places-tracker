@@ -19,11 +19,21 @@ const myCache = createCache({
     ],
 })
 
-const App = (props) => {
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('https://jacoborodicio.com/places-tracker/service-worker.js')
+            .then(registration => {
+                console.log('File: index.js, Function: ServiceWorker registration, Line 7 --> SW registered, registration: ', registration);
+            }).catch(registrationError => console.log('File: index.js, Function: SW registration error: , Line 8 --> registrationError: ', registrationError));
+    })
+}
+
+const App = () => {
+    console.log('Inside app!!!')
     const {width, height} = useWindowDimensions();
     return (
         <CacheProvider value={myCache}>
-            <BrowserRouter>
+            <BrowserRouter basename={'/places-tracker'}>
                 <Route exact path={'/'}>
                     <Suspense fallback={''}>
                         <Portal width={width} height={height}/>

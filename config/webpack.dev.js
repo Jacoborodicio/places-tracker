@@ -22,7 +22,7 @@ const developConfig = {
     },
     target: "web",
     plugins: [
-        new ReactRefreshWebpackPlugin()
+        new ReactRefreshWebpackPlugin(),
     ],
     devtool: "eval-source-map",
     module: {
