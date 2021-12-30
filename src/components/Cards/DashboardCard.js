@@ -3,7 +3,7 @@ import React from 'react';
 import {styled} from "@mui/material";
 import {jsx} from "@emotion/react";
 import {NavLink} from "react-router-dom";
-import DefaultImg from '../../../images/defaultCodeImg.png';
+import DefaultImg from '../../images/defaultCodeImg.png';
 const CardContainer = styled('div')`
   height: 100%;
   width: 100%;
@@ -42,8 +42,8 @@ const CardFooter = styled('div')`
   display: flex;
 `;
 
-const DashboardCard = ({topic}) => {
-    const {image, imageDescription, title} = topic;
+const DashboardCard = ({place}) => {
+    const {image, imageDescription, name} = place;
     return (
         <CardContainer>
             <CardHeader>
@@ -51,13 +51,13 @@ const DashboardCard = ({topic}) => {
                     <img src={DefaultImg} alt={imageDescription} />
                 </CardLogo>
                 <CardTitle>
-                    <h1>{title}</h1>
+                    <h1>{name}</h1>
                 </CardTitle>
             </CardHeader>
             <CardFooter>
-                <NavLink to={topic.link}>
-                    Open
-                </NavLink>
+                {/*<NavLink to={place.link}>*/}
+                {/*    Open*/}
+                {/*</NavLink>*/}
             </CardFooter>
         </CardContainer>
     )
