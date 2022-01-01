@@ -9,33 +9,36 @@ const CardContainer = styled('div')`
   width: 100%;
   padding: .5rem;
   border-radius: .5rem;
-  color: burlywood;
-  background-color: var(--blue-ncs);
-  //  0 0 2px 1px hsl(217deg 18% 35% / 100%),
-  box-shadow: 0 0 7px 4px hsl(217deg 18% 35% / 20%);
-
+  color: whitesmoke;
+  background-color: var(--secondary-dark);
+  //border: 1px solid var(--borders-accent-dark)
 `;
 
 const CardHeader = styled('div')`
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   
 `;
 
 const CardLogo = styled('div')`
-  flex-basis: 30%;
   & > img {
+    border-radius: 5px;
+    margin-right: .5rem;
     width: 5rem;
     height: 5rem;
-  }
-`;
-
-const CardTitle = styled('div')`
-  flex-basis: 70%;
+    @media (max-width: 30rem) {
+      width: 2rem;
+      height: 2rem;
+    }
+    };
 `;
 
 const CardContent = styled('div')`
-  
+  p {
+    margin-top: .5rem;
+    color: var(--text-secondary-dark);
+    font-size: .8rem;
+  }
 `;
 
 const CardFooter = styled('div')`
@@ -43,16 +46,17 @@ const CardFooter = styled('div')`
 `;
 
 const DashboardCard = ({place}) => {
-    const {image, imageDescription, name} = place;
+    const {image, imageDescription, name, description} = place;
     return (
         <CardContainer>
             <CardHeader>
                 <CardLogo>
                     <img src={DefaultImg} alt={imageDescription} />
                 </CardLogo>
-                <CardTitle>
+                <CardContent>
                     <h1>{name}</h1>
-                </CardTitle>
+                    <p>{description}</p>
+                </CardContent>
             </CardHeader>
             <CardFooter>
                 {/*<NavLink to={place.link}>*/}

@@ -29,7 +29,6 @@ if ('serviceWorker' in navigator) {
 }
 
 const App = () => {
-    console.log('Inside app!!!')
     const {width, height} = useWindowDimensions();
     return (
         <CacheProvider value={myCache}>

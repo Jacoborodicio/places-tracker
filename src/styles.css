@@ -1,12 +1,13 @@
 @import url('./preset.css');
 
 :root {
-    --primary-main: #423d3f;
-    --secondary-main: #EEABC4;
-    --mint-cream: #EBF5EE;
-    --dark-bizantium: #542344;
-    --grey-web: #808080;
-    --blue-ncs: #2E86AB;
+    --primary-dark: #222831;
+    --secondary-dark: #393E46;
+    --third-dark: #616F39;
+    --accent-dark: #A7D129;
+    --text-dark: #71cc9b;
+    --text-secondary-dark: #84b89c;
+    --borders-accent-dark: #90dcb3;
 }
 
 html {
@@ -14,7 +15,6 @@ html {
     font-family: "Roboto", sans-serif;
 }
 
-/*rgb(66, 61, 63)*/
 
 
 
