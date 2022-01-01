@@ -23,7 +23,10 @@ const productionConfig = {
             patterns: [{
                 from: './src/manifest.json',
                 to: 'manifest.json'
-            }]
+            },
+                {
+                    from: './src/assets/icons'
+                }]
         })
     ],
     module: {
