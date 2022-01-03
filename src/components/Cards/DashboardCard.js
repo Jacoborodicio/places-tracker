@@ -90,7 +90,7 @@ const ContentFooter = styled('div')`
 `;
 
 const DashboardCard = ({place}) => {
-    const {image, imageDescription, name, description, stars} = place;
+    const {image, imageDescription, name, description, stars, id} = place;
     return (
         <CardContainer>
             <CardHeader>
@@ -104,8 +104,8 @@ const DashboardCard = ({place}) => {
                     <div>
                         <h1>{name}</h1>
                         <div>
-                            <p>{stars}</p>
                             <FontAwesomeIcon icon={faStar} color={'#90DCB3'}/>
+                            <p>{stars}</p>
                         </div>
                     </div>
                     <p>{description}</p>
@@ -113,7 +113,7 @@ const DashboardCard = ({place}) => {
             </CardHeader>
             <CardFooter>
                 <ContentFooter>
-                    <Button title={'Details'} />
+                    <Button title={'Details'} link={`/details/${id}`}/>
                 </ContentFooter>
             </CardFooter>
         </CardContainer>

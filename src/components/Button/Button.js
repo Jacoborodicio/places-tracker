@@ -25,10 +25,10 @@ const StyledButton = styled('button')`
     text-transform: uppercase;
   }
 `;
-const Button = ({icon, back, onClick, title}) => {
+const Button = ({icon, back, onClick, title, link}) => {
     const history = useHistory();
     return (
-        <StyledButton onClick={back ? () => history.push('/') : onClick ? onClick : null}>
+        <StyledButton onClick={() => history.push(back ? '/' : link)}>
             {back ? (<FontAwesomeIcon icon={faIgloo} color={'#423d3f'}/>) : icon ? {icon} : null}
             {title && <p>{title}</p>}
         </StyledButton>

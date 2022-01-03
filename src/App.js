@@ -5,6 +5,7 @@ import createCache from '@emotion/cache';
 import {prefixer} from "stylis";
 import './styles.css';
 import {Route, BrowserRouter} from "react-router-dom";
+import {Container} from "./components/Dashboard/dashboard-styles";
 
 // Lazy loaded imports
 const Favourite  = lazy(() => import("./components/Favourite/Favourite"));
@@ -30,8 +31,12 @@ if ('serviceWorker' in navigator) {
 
 const App = () => {
     const {width, height} = useWindowDimensions();
+    const containerProps = {
+        dimensions: {width, height}
+    };
     return (
         <CacheProvider value={myCache}>
+            <Container {...containerProps}>
             <BrowserRouter basename={'/places-tracker'}>
                 <Route exact path={'/'}>
                     <Suspense fallback={''}>
@@ -51,6 +56,7 @@ const App = () => {
                     </Suspense>
                 </Route>
             </BrowserRouter>
+            </Container>
         </CacheProvider>
     )};
 export default App;
