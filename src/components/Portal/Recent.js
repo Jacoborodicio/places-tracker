@@ -6,11 +6,11 @@ import {styled} from "@mui/material";
 const GlobalContainer = styled('div')`
   box-sizing: border-box;
   overflow: auto;
-  padding: 1rem;
+  padding: 1.5rem;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
-  @media only screen and (min-width: 30rem) {
+  gap: 1.5rem;
+  @media only screen and (min-width: 40rem) {
     grid-template-columns: 1fr 1fr;
   }
   @media only screen and (min-width: 50rem) {

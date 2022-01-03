@@ -11,7 +11,7 @@ import Button from "../Button/Button";
 const CardContainer = styled('div')`
   height: 100%;
   width: 100%;
-  padding: .5rem;
+  padding: 1.5rem;
   border-radius: .5rem;
   color: whitesmoke;
   background-color: var(--secondary-dark);
@@ -19,17 +19,19 @@ const CardContainer = styled('div')`
 `;
 
 const CardHeader = styled('div')`
-  display: flex;
+  width: 100%;
+  gap: 1.5rem;
+  display: inline-flex;
   justify-content: flex-start;
   
 `;
 
 const CardLogo = styled('div')`
+    width: 25%;
+    height: 8rem;
   & > img {
     border-radius: 5px;
-    margin-right: .5rem;
-    width: 5rem;
-    height: 4.375rem;
+    width: 100%;
     //@media (max-width: 30rem) {
     //  width: 2rem;
     //  height: 2rem;
@@ -39,12 +41,15 @@ const CardLogo = styled('div')`
 
 const CardContent = styled('div')`
   width: 100%;
-  & > div:first-of-type {border-bottom: 1px solid var(--text-accent-dark);} 
+  & > div:first-of-type {
+    border-bottom: 1px solid var(--text-accent-dark);
+    margin-bottom: 1rem;
+  } 
   div {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding-bottom: .25rem;
+    padding-bottom: .33rem;
     div {
       display: flex;
       p {
@@ -60,7 +65,6 @@ const CardContent = styled('div')`
     color: var(--text-accent-dark);
   }
   p {
-    margin-top: .5rem;
     color: var(--text-secondary-dark);
   }
 `;
@@ -68,14 +72,15 @@ const CardContent = styled('div')`
 const CardFooter = styled('div')`
   width: 100%;
   display: flex;
+  margin-top: 1.5rem;
 `;
 
 const ImageFooter = styled('div')`
-  width: 5rem;
+  width: 100%;
   text-align: center;
   h3 {
     text-transform: uppercase;
-    padding-top: .5rem;
+    padding-top: 1rem;
   }
 `;
 const ContentFooter = styled('div')`
@@ -91,6 +96,9 @@ const DashboardCard = ({place}) => {
             <CardHeader>
                 <CardLogo>
                     <img src={DefaultImg} alt={imageDescription} />
+                    <ImageFooter>
+                        <h3>Bayern</h3>
+                    </ImageFooter>
                 </CardLogo>
                 <CardContent>
                     <div>
@@ -104,9 +112,6 @@ const DashboardCard = ({place}) => {
                 </CardContent>
             </CardHeader>
             <CardFooter>
-                <ImageFooter>
-                    <h3>Bayern</h3>
-                </ImageFooter>
                 <ContentFooter>
                     <Button title={'Details'} />
                 </ContentFooter>
