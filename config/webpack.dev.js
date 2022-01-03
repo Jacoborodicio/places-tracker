@@ -2,6 +2,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const common = require("./webpack.common");
 const {merge} = require("webpack-merge");
 const path = require("path");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const developConfig = {
     mode: "development",
@@ -10,10 +11,15 @@ const developConfig = {
     },
     devServer: {
         port: 3000,
-        static: {
+        static: [{
             directory: path.join(__dirname, '../dist'),
             publicPath: '/',
         },
+            // {
+            //     directory: path.join(__dirname, '../public'),
+            //     publicPath: '/'
+            // }
+            ],
         historyApiFallback: true,
         compress: true,
         hot: true
@@ -23,6 +29,15 @@ const developConfig = {
     target: "web",
     plugins: [
         new ReactRefreshWebpackPlugin(),
+        new CopyWebpackPlugin({
+            patterns: [{
+                from: './src/manifest.json',
+                to: 'manifest.json'
+            },
+                {
+                    from: './src/assets/icons'
+                }]
+        })
     ],
     devtool: "eval-source-map",
     module: {

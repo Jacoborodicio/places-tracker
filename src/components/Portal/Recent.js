@@ -10,13 +10,13 @@ const GlobalContainer = styled('div')`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  @media (max-width: 80rem) {
+  @media only screen and (max-width: 80rem) {
     grid-template-columns: repeat(3, 1fr);
   };
-  @media (max-width: 50rem) {
+  @media only screen and (max-width: 50rem) {
     grid-template-columns: 1fr 1fr;
   };
-  @media (max-width: 30rem) {
+  @media only screen and (max-width: 30rem) {
     grid-template-columns: 1fr;
   };
 `;

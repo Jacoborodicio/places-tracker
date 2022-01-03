@@ -5,14 +5,24 @@
     --secondary-dark: #393E46;
     --third-dark: #616F39;
     --accent-dark: #A7D129;
-    --text-dark: #71cc9b;
-    --text-secondary-dark: #84b89c;
-    --borders-accent-dark: #90dcb3;
+    --text-accent-dark: #90DCB3;
+    --text-secondary-dark: #D7E4D4;
 }
 
 html {
     height: 100vh;
     font-family: "Roboto", sans-serif;
+    font-size: 12px;
+}
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-accent-dark);
+}
+h1 {font-size: 14px}
+h2 {font-size: 12px}
+h3 {font-size: 10px}
+h4 {font-size: 8px}
+p {
+    color: var(--text-secondary-dark);
 }
 
 

@@ -31,7 +31,6 @@ export const Places = [
         image: "",
         imageDescription: "",
         stars: 12, // Number of reputation stars
-        ratio: 3, // Global valuation from 0-5
         discoveredAt: "2020-06-18",
         description: "Buen paseo para caminar, bici, patines... hasta la presa de Passau",
         address: "Camino de la Universidad",

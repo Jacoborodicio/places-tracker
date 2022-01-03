@@ -9,24 +9,28 @@ import {useHistory} from "react-router-dom";
 
 const StyledButton = styled('button')`
   all: unset;
-  box-shadow: 0 0 4px rgb(66, 61, 63), 2px 4px 2px rgba(66, 61, 63, .2);
+  box-shadow: 0 0 1px 1px var(--text-accent-dark);
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
-  padding: .25rem;
-  width: 2.5rem;
-  height: 1.5rem;
+  border-radius: 2px;
+  padding: .25rem .5rem;
+  height: 1rem;
   cursor: pointer;
-  &:hover {
-    background: white;
+  //&:hover {
+  //  background: white;
+  //}
+  p {
+    color: var(--text-accent-dark);
+    text-transform: uppercase;
   }
 `;
-const Button = ({icon, back, onClick}) => {
+const Button = ({icon, back, onClick, title}) => {
     const history = useHistory();
     return (
         <StyledButton onClick={back ? () => history.push('/') : onClick ? onClick : null}>
-            <FontAwesomeIcon icon={back ? faIgloo : icon} color={'#423d3f'} />
+            {back ? (<FontAwesomeIcon icon={faIgloo} color={'#423d3f'}/>) : icon ? {icon} : null}
+            {title && <p>{title}</p>}
         </StyledButton>
     )
 }
