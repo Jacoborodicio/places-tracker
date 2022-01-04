@@ -4,12 +4,11 @@ import {jsx} from "@emotion/react";
 import {styled} from "@mui/material";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faAngleDoubleLeft} from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
-import {faIgloo} from "@fortawesome/free-solid-svg-icons/faIgloo";
 import {useHistory} from "react-router-dom";
 
 const StyledButton = styled('button')`
   all: unset;
-  box-shadow: 0 0 1px 1px var(--text-accent-dark);
+  box-shadow: ${(props => props.secondary ? 'none' : `0 0 1px 1px var(--text-accent-dark)`) };
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -25,11 +24,11 @@ const StyledButton = styled('button')`
     text-transform: uppercase;
   }
 `;
-const Button = ({icon, back, onClick, title, link}) => {
+const Button = ({icon, back, title, link, secondary}) => {
     const history = useHistory();
     return (
-        <StyledButton onClick={() => history.push(back ? '/' : link)}>
-            {back ? (<FontAwesomeIcon icon={faIgloo} color={'#423d3f'}/>) : icon ? {icon} : null}
+        <StyledButton onClick={() => history.push(back ? '/' : link)} secondary={secondary}>
+            {back ? (<FontAwesomeIcon icon={faAngleDoubleLeft} color={'#90DCB3'}/>) : icon ? {icon} : null}
             {title && <p>{title}</p>}
         </StyledButton>
     )
