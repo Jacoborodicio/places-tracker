@@ -24,12 +24,17 @@ const StyledButton = styled('button')`
     text-transform: uppercase;
   }
 `;
-const Button = ({icon, back, title, link, secondary}) => {
+const Button = ({children, icon, back, title, link, secondary, onClick}) => {
     const history = useHistory();
+    const handleClick = () => {
+        onClick && onClick();
+        back ? history.push('/') : link ? history.push(link) : null;
+    }
     return (
-        <StyledButton onClick={() => history.push(back ? '/' : link)} secondary={secondary}>
+        <StyledButton onClick={handleClick} secondary={secondary}>
             {back ? (<FontAwesomeIcon icon={faAngleDoubleLeft} color={'#90DCB3'}/>) : icon ? {icon} : null}
             {title && <p>{title}</p>}
+            <p>{children}</p>
         </StyledButton>
     )
 }

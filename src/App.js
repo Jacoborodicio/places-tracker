@@ -6,7 +6,11 @@ import {prefixer} from "stylis";
 import './styles.css';
 import {Route, BrowserRouter} from "react-router-dom";
 import {Container} from "./components/Dashboard/dashboard-styles";
-
+import Profile from "./components/Profile/Profile";
+import Login from "./components/Login/Login";
+import {useSelector} from "react-redux";
+import {createCustomTheme} from "./Theme/Theme";
+import {ThemeProvider} from "@mui/material";
 // Lazy loaded imports
 const Favourite  = lazy(() => import("./components/Favourite/Favourite"));
 const Portal = lazy(() => import('./components/Portal/Portal'));
@@ -30,12 +34,16 @@ if ('serviceWorker' in navigator) {
 }
 
 const App = () => {
+    const theme = useSelector((state) => state.theme.value.currentTheme)
+    console.log('File: App.js, Function: App, Line 38 --> theme: ', theme);
+    const customTheme = createCustomTheme(theme);
     const {width, height} = useWindowDimensions();
     const containerProps = {
         dimensions: {width, height}
     };
     return (
         <CacheProvider value={myCache}>
+            <ThemeProvider theme={customTheme}>
             <Container {...containerProps}>
             <BrowserRouter basename={'/places-tracker'}>
                 <Route exact path={'/'}>
@@ -55,8 +63,19 @@ const App = () => {
                         <Details />
                     </Suspense>
                 </Route>
+                <Route path={'/profile'}>
+                    <Suspense fallback={''}>
+                        <Profile />
+                    </Suspense>
+                </Route>
+                <Route path={'/login'}>
+                    <Suspense fallback={''}>
+                        <Login />
+                    </Suspense>
+                </Route>
             </BrowserRouter>
             </Container>
+            </ThemeProvider>
         </CacheProvider>
     )};
 export default App;

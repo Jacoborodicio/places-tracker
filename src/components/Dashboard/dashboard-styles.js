@@ -9,7 +9,7 @@ export const InnerText = styled('div')`
 export const Container = styled('div')`
 	//background: rgb(71,58,112);
 	//background: linear-gradient(90deg, rgba(71,58,112,1) 0%, rgba(40,39,85,1) 25%, rgba(77,8,77,1) 60%, rgba(89,17,81,1) 100%);
-	background-color: var(--primary-dark);
+	background-color: ${({theme}) => theme.palette.primary.main};
 	min-height: ${props => props.hasOwnProperty('dimensions') ? props.dimensions.height + 'px' : undefined};
 	min-width: ${props => props.hasOwnProperty('dimensions') ? props.dimensions.width + 'px' : undefined};
 	${props => typeof props.style === 'object' ? {...props.style} : props.style};
