@@ -16,23 +16,47 @@ const themes = {
         text: {
             primary: '#D7E4D4',
             secondary: '#90DCB3'
+        },
+        typography: {
+            fontFamily: `"Raleway","Roboto", "Arial", sans-serif`,
+            h1: {
+                color: '#90DCB3'
+            },
+            body1: {
+                color: '#D7E4D4',
+                fontSize: '.875rem' // 14px from base 16px
+            }
+        },
+        margins: {
+            global: '1.5rem',
         }
     },
     light: {
         palette: {
             primary: {
-                main: '#b7e4c7',
-                light: '#d8f3dc',
-                dark: '#95d5b2'},
+                main: '#DEF2F1',
+                light: '#FEFFFF',
+                dark: '#3AAFA9'},
             secondary: {
-                main: '#1b4332',
-                light: '#2d6a4f',
-                dark: '#081c15',
+                main: '#2B7A78',
+                light: '#3AAFA9',
+                dark: '#17252A',
             },
         },
         text: {
-            primary: '#2f3e46',
-            secondary: '#1a936f'
+            primary: '#17252A',
+            secondary: '#DEF2F1'
+        },
+        typography: {
+            fontFamily: `"Raleway","Roboto", "Arial", sans-serif`,
+            h1: {
+                color: '#2d6a4f',
+
+            },
+            body1: {
+                color: '#081c15',
+                fontSize: '.875rem' // 14px from base 16px
+            }
         }
     }
 };

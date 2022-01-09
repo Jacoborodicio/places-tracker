@@ -13,14 +13,14 @@ export const Container = styled('div')`
 	min-height: ${props => props.hasOwnProperty('dimensions') ? props.dimensions.height + 'px' : undefined};
 	min-width: ${props => props.hasOwnProperty('dimensions') ? props.dimensions.width + 'px' : undefined};
 	${props => typeof props.style === 'object' ? {...props.style} : props.style};
-`
-
-export const Label = styled('label')`
-	font-size: 0.75rem;
-	margin-bottom: 3px;
-	display: inline-block;
-	margin-right: ${props => props.inline ? '1rem' : 0};
+	& > * {
+		font-family: ${({theme}) => theme.typography.fontFamily};
+	}
+	& h1 {
+		color: ${({theme}) => theme.typography.h1.color};
+	}
 	& p {
-		color: ${props => props.labelColor ? props.labelColor : ''};
+		color: ${({theme}) => theme.typography.body1.color};
+		font-size: ${({theme}) => theme.typography.body1.fontSize};
 	}
 `;

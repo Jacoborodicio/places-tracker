@@ -11,11 +11,12 @@ import Login from "./components/Login/Login";
 import {useSelector} from "react-redux";
 import {createCustomTheme} from "./Theme/Theme";
 import {ThemeProvider} from "@mui/material";
+import AppBar from './components/AppBar/AppBar'
 // Lazy loaded imports
 const Favourite  = lazy(() => import("./components/Favourite/Favourite"));
 const Portal = lazy(() => import('./components/Portal/Portal'));
 const Details = lazy(() => import('./components/Details/Details'));
-
+// const AppBar = lazy(() => import('./components/AppBar/AppBar'));
 // Attached customized key to styling classes
 const myCache = createCache({
     key: 'places-tracker',
@@ -45,6 +46,7 @@ const App = () => {
         <CacheProvider value={myCache}>
             <ThemeProvider theme={customTheme}>
             <Container {...containerProps}>
+                <AppBar />
             <BrowserRouter basename={'/places-tracker'}>
                 <Route exact path={'/'}>
                     <Suspense fallback={''}>

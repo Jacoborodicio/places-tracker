@@ -14,7 +14,7 @@ const CardContainer = styled('div')`
   padding: 1.5rem;
   border-radius: .5rem;
   color: whitesmoke;
-  background-color: var(--secondary-dark);
+  background-color: ${({theme}) => theme.palette.secondary.light};
   //border: 1px solid var(--borders-accent-dark)
 `;
 
