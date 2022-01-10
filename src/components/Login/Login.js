@@ -1,6 +1,6 @@
 import {useDispatch} from "react-redux";
 import {login} from '../../features/user';
-import Button from "../Button/Button";
+import Button from "../Buttons/Button";
 const Login = () => {
     const dispatch = useDispatch();
 return (

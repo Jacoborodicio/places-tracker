@@ -12,6 +12,7 @@ import {useSelector} from "react-redux";
 import {createCustomTheme} from "./Theme/Theme";
 import {ThemeProvider} from "@mui/material";
 import AppBar from './components/AppBar/AppBar'
+import NewPlace from "./components/NewPlace/NewPlace";
 // Lazy loaded imports
 const Favourite  = lazy(() => import("./components/Favourite/Favourite"));
 const Portal = lazy(() => import('./components/Portal/Portal'));
@@ -36,7 +37,6 @@ if ('serviceWorker' in navigator) {
 
 const App = () => {
     const theme = useSelector((state) => state.theme.value.currentTheme)
-    console.log('File: App.js, Function: App, Line 38 --> theme: ', theme);
     const customTheme = createCustomTheme(theme);
     const {width, height} = useWindowDimensions();
     const containerProps = {
@@ -46,7 +46,7 @@ const App = () => {
         <CacheProvider value={myCache}>
             <ThemeProvider theme={customTheme}>
             <Container {...containerProps}>
-                <AppBar />
+
             <BrowserRouter basename={'/places-tracker'}>
                 <Route exact path={'/'}>
                     <Suspense fallback={''}>
@@ -75,6 +75,12 @@ const App = () => {
                         <Login />
                     </Suspense>
                 </Route>
+                <Route path={'/new-place'}>
+                    <Suspense fallback={''}>
+                        <NewPlace />
+                    </Suspense>
+                </Route>
+            <AppBar />
             </BrowserRouter>
             </Container>
             </ThemeProvider>

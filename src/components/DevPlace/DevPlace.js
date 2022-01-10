@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {jsx} from "@emotion/react";
 import {styled} from "@mui/material";
 import {Trail, animated as a, useTrail} from "@react-spring/web";
-import Button from "../Button/Button";
+import Button from "../Buttons/Button";
 
 
 const items = ["Item1", "Item2", "Item3", "Item4"];

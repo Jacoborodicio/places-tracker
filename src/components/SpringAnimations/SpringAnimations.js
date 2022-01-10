@@ -4,7 +4,7 @@ import {useTransition, animated, useTrail} from "@react-spring/web";
 import {jsx, css} from "@emotion/react";
 import {styled} from "@mui/material";
 import {useHistory} from "react-router-dom";
-import Button from "../Button/Button";
+import Button from "../Buttons/Button";
 import {faAngleDoubleLeft} from "@fortawesome/free-solid-svg-icons/faAngleDoubleLeft";
 import SvgAnimations from "./BlockAnimations/SvgAnimations";
 import {faExchangeAlt} from "@fortawesome/free-solid-svg-icons/faExchangeAlt";
@@ -66,7 +66,7 @@ const SpringAnimations = () => {
             {transition((style, item) => {
                 return item ? (
                     <MainContainer style={style}>
-                        <Button onClick={() => history.push('/')} icon={faAngleDoubleLeft} />
+                        <Button onClick={() => history.goBack()} icon={faAngleDoubleLeft} />
                         {trail.map(({ x, height, ...rest }, index) => (
                             <Greeting
                                 key={items[index]}

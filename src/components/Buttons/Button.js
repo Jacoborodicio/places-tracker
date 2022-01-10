@@ -16,12 +16,13 @@ const StyledButton = styled('button')`
   padding: .25rem .5rem;
   height: 1rem;
   cursor: pointer;
-  //&:hover {
-  //  background: white;
-  //}
+  transition: transform .2s;
   p {
     color: var(--text-accent-dark);
     text-transform: uppercase;
+  }
+  &:hover {
+    transform: scale(1.1);
   }
 `;
 const Button = ({children, icon, back, title, link, secondary, onClick}) => {

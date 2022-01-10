@@ -1,6 +1,6 @@
 /** @jsx jsx **/
 import {jsx, css} from "@emotion/react";
-import Button from "../Button/Button";
+import Button from "../Buttons/Button";
 
 const Favourite = () => {
     return (

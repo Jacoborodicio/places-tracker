@@ -1,7 +1,7 @@
 /** @jsx jsx **/
 import {jsx, css} from '@emotion/react';
 import {useParams} from "react-router-dom";
-import Button from "../Button/Button";
+import Button from "../Buttons/Button";
 import {useEffect, useState} from "react";
 import {styled} from "@mui/material";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";

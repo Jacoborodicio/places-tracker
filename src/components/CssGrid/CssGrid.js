@@ -3,7 +3,7 @@ import React, {lazy, Suspense} from 'react';
 import {styled} from "@mui/material";
 import {jsx, css} from "@emotion/react";
 import {testimonials} from "../../helpers/constants";
-import Button from "../Button/Button";
+import Button from "../Buttons/Button";
 const Testimonial = lazy(() => import('./Testimonial'));
 
 const TestimonialsGrid = styled('div')`

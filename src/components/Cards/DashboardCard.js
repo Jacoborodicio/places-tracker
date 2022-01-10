@@ -6,7 +6,7 @@ import {NavLink} from "react-router-dom";
 import DefaultImg from '../../images/defaultCodeImg.png';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
-import Button from "../Button/Button";
+import Button from "../Buttons/Button";
 
 const CardContainer = styled('div')`
   height: 100%;

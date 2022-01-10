@@ -1,5 +1,5 @@
 import {useSelector} from "react-redux";
-import Button from "../Button/Button";
+import Button from "../Buttons/Button";
 import {logout} from "../../features/user";
 import {changeTheme} from "../../features/theme";
 import {useDispatch} from "react-redux";
