@@ -13,6 +13,7 @@ import {createCustomTheme} from "./Theme/Theme";
 import {ThemeProvider} from "@mui/material";
 import AppBar from './components/AppBar/AppBar'
 import NewPlace from "./components/NewPlace/NewPlace";
+import Recent from "./components/Portal/Recent";
 // Lazy loaded imports
 const Favourite  = lazy(() => import("./components/Favourite/Favourite"));
 const Portal = lazy(() => import('./components/Portal/Portal'));
@@ -78,6 +79,16 @@ const App = () => {
                 <Route path={'/new-place'}>
                     <Suspense fallback={''}>
                         <NewPlace />
+                    </Suspense>
+                </Route>
+                <Route path={'/recent'}>
+                    <Suspense fallback={''}>
+                        <p>It's gonna be like portal (for mobile versions only) once I refactor Recent component into a reusable one</p>
+                    </Suspense>
+                </Route>
+                <Route path={'/configuration'}>
+                    <Suspense fallback={''}>
+                        <p>Configuration section will be live here!</p>
                     </Suspense>
                 </Route>
             <AppBar />

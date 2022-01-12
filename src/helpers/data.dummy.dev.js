@@ -56,3 +56,4 @@ export const Places = [
 //     notes: "It's a really good place for the price!",
 //     mates: "Patricia"
 // }
+
