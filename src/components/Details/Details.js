@@ -7,6 +7,7 @@ import {styled} from "@mui/material";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMapSigns} from "@fortawesome/free-solid-svg-icons";
 import Annotations from "./Annotations/Annotations";
+import axios from "axios";
 
 const DetailsContainer = styled('div')`
   padding: 1.5rem;
@@ -60,30 +61,8 @@ const Details = () => {
     const timer = async ms => new Promise(resolve => setTimeout(resolve, ms));
 
     useEffect(async () => {
-        // make api call to fetch the whole details of the desired place
-        await timer(1000);
-        const response = {
-                id: 1,
-                name: "Home",
-                image: "",
-                imageDescription: "",
-                stars: 12, // Number of reputation stars
-                ratio: 3, // Global valuation from 0-5
-                discoveredAt: "2019-02-01",
-                description: "The place where I currently live",
-                address: "Ostuzzistrasse 2",
-                distance: 3.2,
-                distanceUnit: 'km',
-                types: ["Restaurants", "Cocktails", "Sightseeing"],
-                lastTimeVisited: "2019-02-01",
-                annotations: [
-                    {id: 1, title: "Current situation", note: "Temporary closed because of Corona", createdAt: ''},
-                    {id: 2, title: "Reservation", note: "For a coffee is ok, but if we want to have dinner, it’s needed to call the day before due to the big number of reservations.", createdAt: '2021-01-10'},
-                    {id: 3, title: "Totally recommended!", note: "It’s a really good place for the price. I must give that the food was not unbeliveable but the panorama is awesome!", createdAt: '2020-12-12'}
-                ],
-                mates: ["Patricia"]
-            };
-            setPlace(response);
+        const response = await axios.get(`http://localhost:9000/api/v1/places/${id}`);
+            setPlace(response.data);
             setIsLoading(false);
     }, []);
     return isLoading ? <p>...holding id...</p> : (

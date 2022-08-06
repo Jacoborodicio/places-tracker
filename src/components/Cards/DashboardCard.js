@@ -90,7 +90,8 @@ const ContentFooter = styled('div')`
 `;
 
 const DashboardCard = ({place}) => {
-    const {image, imageDescription, name, description, stars, id} = place;
+    const {image, imageDescription, name, description, stars, _id} = place;
+    console.log('%cFile: DashboardCard.js, Function: DashboardCard, Line 94 id: ', 'color: pink', _id);
     return (
         <CardContainer>
             <CardHeader>
@@ -113,7 +114,7 @@ const DashboardCard = ({place}) => {
             </CardHeader>
             <CardFooter>
                 <ContentFooter>
-                    <Button title={'Details'} link={`/details/${id}`}/>
+                    <Button title={'Details'} link={`/details/${_id}`}/>
                 </ContentFooter>
             </CardFooter>
         </CardContainer>

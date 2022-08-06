@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Places} from "../../helpers/data.dummy.dev";
 import DashboardCard from "../Cards/DashboardCard";
 import {styled} from "@mui/material";
+import axios from "axios";
 
 const GlobalContainer = styled('div')`
   box-sizing: border-box;
@@ -21,10 +22,23 @@ const GlobalContainer = styled('div')`
   }
 `;
 const Recent = () => {
-    return (
+    const [recentPlaces, setRecentPlaces] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(async () => {
+        const response = await axios.get('http://localhost:9000/api/v1/places');
+        console.log('%cFile: Recent.js, Function: response, Line 31 response: ', 'color: pink', response);
+        setRecentPlaces(response.data);
+        setLoading(false);
+    }, [])
+    return loading ? <p>loading...</p> : (
         <GlobalContainer>
-            {Places.map(place => (
-                <DashboardCard key={place.id} place={place}/>
+            {console.log('%cFile: Recent.js, Function: Recent, Line 36 recentPlaces: ', 'color: pink', recentPlaces)}
+            {/*{Places.map(place => (*/}
+            {/*    <DashboardCard key={place.id} place={place}/>*/}
+            {/*))}*/}
+            {recentPlaces.map(place => (
+                <DashboardCard key={place['_id']} place={place}/>
             ))}
         </GlobalContainer>
     )
