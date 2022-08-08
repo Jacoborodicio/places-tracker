@@ -72,7 +72,7 @@ const App = () => {
                     </Suspense>
                 </Route>
                 <Route path={'/login'}>
-                    <Suspense fallback={''}>
+                    <Suspense fallback={'Replace with a loader'}>
                         <Login />
                     </Suspense>
                 </Route>
