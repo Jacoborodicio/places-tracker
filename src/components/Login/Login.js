@@ -16,12 +16,13 @@ const PageContainer = styled('div')`
 const LoginContainer = styled('div')`
     width: 30%;
     height: 30%;
+    padding: 2rem;
     background-color: #D7E4D4;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
 `;
 
 const Login = () => {
@@ -45,19 +46,21 @@ return (
         <LoginContainer>
             <TextField
                 placeholder={'Email'}
+                fullWidth
                 name={'email'}
                 type={"email"}
                 value={user.email}
-                onBlur={handleChange}
+                onChange={handleChange}
             />
             <TextField
                 placeholder={'Password'}
+                fullWidth
                 name={'password'}
                 type={"password"}
                 value={user.password}
-                onBlur={handleChange}
+                onChange={handleChange}
             />
-            <Button onClick={handleLogin}>Login</Button>
+            <Button onClick={handleLogin} dark width={'100%'}>Login</Button>
         </LoginContainer>
     </PageContainer>
 )
