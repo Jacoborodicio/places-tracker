@@ -7,7 +7,6 @@ import './styles.css';
 import {Route, BrowserRouter} from "react-router-dom";
 import {Container} from "./components/Dashboard/dashboard-styles";
 import Profile from "./components/Profile/Profile";
-import Login from "./components/Login/Login";
 import {useSelector} from "react-redux";
 import {createCustomTheme} from "./Theme/Theme";
 import {ThemeProvider} from "@mui/material";
@@ -18,6 +17,8 @@ import Recent from "./components/Portal/Recent";
 const Favourite  = lazy(() => import("./components/Favourite/Favourite"));
 const Portal = lazy(() => import('./components/Portal/Portal'));
 const Details = lazy(() => import('./components/Details/Details'));
+const Login = lazy(() => import('./components/Auth/Login'));
+const Register = lazy(() => import('./components/Auth/Register'));
 // const AppBar = lazy(() => import('./components/AppBar/AppBar'));
 // Attached customized key to styling classes
 const myCache = createCache({
@@ -74,6 +75,11 @@ const App = () => {
                 <Route path={'/login'}>
                     <Suspense fallback={'Replace with a loader'}>
                         <Login />
+                    </Suspense>
+                </Route>
+                <Route path={'/register'}>
+                    <Suspense fallback={'Replace with a loader'}>
+                        <Register />
                     </Suspense>
                 </Route>
                 <Route path={'/new-place'}>

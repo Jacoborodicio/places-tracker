@@ -33,13 +33,13 @@ const Login = () => {
         setUser({...user, [name]: value})
     }
     const handleLogin = () => {
-        console.log('%cFile: Login.js, Function: handleLogin, Line 33 user: ', 'color: pink', user);
+        console.log('%cFile: Auth.js, Function: handleLogin, Line 33 user: ', 'color: pink', user);
     }
 return (
     // <div>
     //     <p>from login here!</p>
     //     <Button link={'/profile'} onClick={() => dispatch(login({name: "jacobo", age: 33, email: "jacoborodicio@gmail.com"}))}>
-    //         Login
+    //         Auth
     //     </Button>
     // </div>
     <PageContainer>
