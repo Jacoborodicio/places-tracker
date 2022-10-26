@@ -4,6 +4,7 @@ import Button from "../Buttons/Button";
 import {styled} from "@mui/material";
 import {TextField} from "@mui/material";
 import {useState} from "react";
+import axios from 'axios';
 
 const PageContainer = styled('div')`
     display: flex;
@@ -32,8 +33,22 @@ const Login = () => {
         const {name, value} = e.target;
         setUser({...user, [name]: value})
     }
-    const handleLogin = () => {
+    const handleLogin = async () => {
         console.log('%cFile: Auth.js, Function: handleLogin, Line 33 user: ', 'color: pink', user);
+        try {
+            const demoResponse = await axios.get('https://jsonplaceholder.typicode.com/todos/1');
+            console.log('%cFile: Login.js, Function: handleLogin, Line 40 demoResponse: ', 'color: pink', demoResponse);
+            const response = await axios.post('https://localhost:9000/api/v1/users/login', user, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Headers': '*',
+                }
+            })
+            console.log('%cFile: Login.js, Function: handleLogin, Line 39 response: ', 'color: pink', response);
+        } catch (err) {
+            console.log('%cFile: Login.js, Function: handleLogin, Line 39 err: ', 'color: pink', err)
+        }
+            
     }
 return (
     // <div>
