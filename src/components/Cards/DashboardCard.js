@@ -8,6 +8,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
 import Button from "../Buttons/Button";
 import {FavouriteStart} from "../Buttons/FavouriteStart";
+import {faThumbsUp} from "@fortawesome/free-solid-svg-icons/faThumbsUp";
 
 const CardContainer = styled('div')`
   height: 100%;
@@ -91,13 +92,12 @@ const ContentFooter = styled('div')`
 `;
 
 const DashboardCard = ({place}) => {
-    const {image, imageDescription, name, description, stars,favourite,  _id} = place;
-    console.log('%cFile: DashboardCard.js, Function: DashboardCard, Line 94 id: ', 'color: pink', _id);
+    const {image, imageDescription, name, description, thumbsUp, favourite,  _id} = place;
     return (
         <CardContainer>
             <CardHeader>
                 <CardLogo>
-                    <img src={DefaultImg} alt={imageDescription} />
+                    <img src={image ? image : DefaultImg} alt={imageDescription} />
                     <ImageFooter>
                         <h3>Bayern</h3>
                     </ImageFooter>
@@ -106,10 +106,12 @@ const DashboardCard = ({place}) => {
                     <div>
                         <h1>{name}</h1>
                         <div>
-                            {/*<FontAwesomeIcon icon={faStar} color={'#90DCB3'}/>*/}
                             <FavouriteStart active={favourite} disabled onlyActive />
-                            {/*<p>{stars}</p>*/}
                         </div>
+                        {thumbsUp && (<div>
+                            <FontAwesomeIcon icon={faThumbsUp} color={'#90DCB3FF'}/>
+                            <p>{thumbsUp}</p>
+                        </div>)}
                     </div>
                     <p>{description}</p>
                 </CardContent>

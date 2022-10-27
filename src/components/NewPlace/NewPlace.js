@@ -10,10 +10,9 @@ import {FavouriteStart} from "../Buttons/FavouriteStart";
 const NewPlace = () => {
     const [place, setPlace] = useState({});
     const history = useHistory();
+    // TODO: Not possible to edit a value once it was recently edited
     const handleChange = e => {
-        console.log('%cFile: NewPlace.js, Function: handleChange, Line 10 e.target: ', 'color: pink', e.target);
         const {name, value} = e.target;
-        console.log('%cFile: NewPlace.js, Function: handleChange, Line 12 name, value: ', 'color: pink', name, value);
         setPlace({
             ...place,
             [name]: value
@@ -29,7 +28,6 @@ const NewPlace = () => {
                     'Access-Control-Allow-Headers': '*',
                 }
             });
-            console.log('%cFile: NewPlace.js, Function: handleSave, Line 18 response: ', 'color: pink', response);
             history.goBack();
         } catch (error) {
             console.log('%cFile: NewPlace.js, Function: handleSave, Line 20 error: ', 'color: pink', error);
@@ -71,9 +69,9 @@ const NewPlace = () => {
                 </div>
                 <div>
                     <TextField
-                        name='stars'
-                        label='Stars'
-                        value={place?.stars}
+                        name='thumbsUp'
+                        label='Thumbs Up'
+                        value={place?.thumbsUp}
                         onBlur={handleChange}
                         type='number'
                     />
@@ -81,7 +79,7 @@ const NewPlace = () => {
                 <div>
                     <TextField
                         name='ratio'
-                        label='Ration'
+                        label='Ratio'
                         value={place?.ratio}
                         onBlur={handleChange}
                         type='number'
