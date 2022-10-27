@@ -33,7 +33,7 @@ const Button = ({children, icon, back, title, link, secondary, onClick}) => {
     }
     return (
         <StyledButton onClick={handleClick} secondary={secondary}>
-            {back ? (<FontAwesomeIcon icon={faAngleDoubleLeft} color={'#90DCB3'}/>) : icon ? {icon} : null}
+            {back ? (<FontAwesomeIcon icon={faAngleDoubleLeft} color={'#90DCB3'}/>) : icon ? icon : null}
             {title && <p>{title}</p>}
             <p>{children}</p>
         </StyledButton>

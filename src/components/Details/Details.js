@@ -5,9 +5,10 @@ import Button from "../Buttons/Button";
 import {useEffect, useState} from "react";
 import {styled} from "@mui/material";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMapSigns} from "@fortawesome/free-solid-svg-icons";
+import {faMapSigns, faTrash} from "@fortawesome/free-solid-svg-icons";
 import Annotations from "./Annotations/Annotations";
 import axios from "axios";
+import Header from "../Header/Header";
 
 const DetailsContainer = styled('div')`
   padding: 1.5rem;
@@ -65,13 +66,16 @@ const Details = () => {
             setPlace(response.data);
             setIsLoading(false);
     }, []);
+
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`http://localhost:9000/api/v1/places/${id}`);
+            history.back();
+        } catch (error) {console.log('%c Error while deleting a place', 'color: #ecb1f2; font-style:italic');}
+    }
     return isLoading ? <p>...holding id...</p> : (
         <DetailsContainer>
-            <div>
-                {/*TODO: Move it to the navigation item which we need to create*/}
-            <Button secondary back />
-            <h1>{place['name']}</h1>
-            </div>
+            <Header actionSection={{start: <Button secondary back />, middle: <h1>{place['name']}</h1>, end: <Button secondary onClick={handleDelete} icon={<FontAwesomeIcon icon={faTrash} color={'#90DCB3'} title='Delete' />} /> }} />
             <div className={'imgSection'}>
                 {place.image ? <img src={place.image} alt={place.imageDescription} /> : <p className={'noImgMsg'}>No image yet</p> }
                 <div className={'footerImageSection'}>
