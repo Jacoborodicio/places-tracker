@@ -6,6 +6,7 @@ import axios from "axios";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
 import {FavouriteStart} from "../Buttons/FavouriteStart";
+import ImagePicker from "../ImagePicker/ImagePicker";
 
 const NewPlace = () => {
     const [place, setPlace] = useState({});
@@ -19,6 +20,34 @@ const NewPlace = () => {
         })
     }
     const handleSave = async () => {
+        /**
+         * const finalDto = JSON.stringify({
+         *       ...this.state.project,
+         *       versionList: [{...this.state.currentVersionData}]
+         *     });
+         *     const blob = new Blob([finalDto], {type: 'application/json'});
+         *     let formData = new FormData();
+         *     formData.append('dto', blob);
+         *     formData.append('isRequest', final);
+         *     Object.keys(this.state.fileObjects).forEach(mainKey => {
+         *       Object.keys(this.state.fileObjects[mainKey]).forEach(key => {
+         *         formData.append(
+         *           this.state.currentVersionData.value.filesUpload[mainKey].varName,
+         *           this.state.fileObjects[mainKey][key],
+         *           this.state.fileObjects[mainKey][key].name
+         *         );
+         *       });
+         *     });
+         *     axios
+         *       .put(`${apiAcquisitionUrl}/evaluation/bc`, formData)
+         *       .then(() => {
+         *         this.callToApi(this.state.queryParams.id);
+         *       })
+         *       .catch(error => {
+         *         handleCommonSavingError(error, this.props.onSave);
+         *         this.setState({isLoading: false});
+         *       });
+         * */
         try {
             const response = await axios.post('http://localhost:9000/api/v1/places', place, {
                 headers: {
@@ -42,6 +71,7 @@ const NewPlace = () => {
             <div>
                 <div>
                     <p>here it will be the image picker</p>
+                    <ImagePicker viewport={{width: 100, height: 100, type: 'square'}} handleCrop={(file) => console.log('%c crop', 'color: #ecb1f2; font-style:italic', file)} file={place?.image} />
                 </div>
                 <div>
                     <TextField
