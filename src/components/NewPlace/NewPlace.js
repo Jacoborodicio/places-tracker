@@ -3,6 +3,9 @@ import {useHistory} from "react-router-dom";
 import {TextField} from "@mui/material";
 import {useState} from "react";
 import axios from "axios";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
+import {FavouriteStart} from "../Buttons/FavouriteStart";
 
 const NewPlace = () => {
     const [place, setPlace] = useState({});
@@ -27,6 +30,7 @@ const NewPlace = () => {
                 }
             });
             console.log('%cFile: NewPlace.js, Function: handleSave, Line 18 response: ', 'color: pink', response);
+            history.goBack();
         } catch (error) {
             console.log('%cFile: NewPlace.js, Function: handleSave, Line 20 error: ', 'color: pink', error);
         }
@@ -107,6 +111,9 @@ const NewPlace = () => {
                         value={place?.distanceUnit}
                         onBlur={handleChange}
                     />
+                </div>
+                <div>
+                    <FavouriteStart name='favourite' onClick={handleChange} active={place?.favourite} />
                 </div>
             </div>
             <div>

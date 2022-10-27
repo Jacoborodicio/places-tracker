@@ -7,6 +7,7 @@ import DefaultImg from '../../images/defaultCodeImg.png';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
 import Button from "../Buttons/Button";
+import {FavouriteStart} from "../Buttons/FavouriteStart";
 
 const CardContainer = styled('div')`
   height: 100%;
@@ -90,7 +91,7 @@ const ContentFooter = styled('div')`
 `;
 
 const DashboardCard = ({place}) => {
-    const {image, imageDescription, name, description, stars, _id} = place;
+    const {image, imageDescription, name, description, stars,favourite,  _id} = place;
     console.log('%cFile: DashboardCard.js, Function: DashboardCard, Line 94 id: ', 'color: pink', _id);
     return (
         <CardContainer>
@@ -105,8 +106,9 @@ const DashboardCard = ({place}) => {
                     <div>
                         <h1>{name}</h1>
                         <div>
-                            <FontAwesomeIcon icon={faStar} color={'#90DCB3'}/>
-                            <p>{stars}</p>
+                            {/*<FontAwesomeIcon icon={faStar} color={'#90DCB3'}/>*/}
+                            <FavouriteStart active={favourite} disabled onlyActive />
+                            {/*<p>{stars}</p>*/}
                         </div>
                     </div>
                     <p>{description}</p>
