@@ -7,7 +7,7 @@ import "croppie/croppie.css"
 import {faCopy} from "@fortawesome/free-solid-svg-icons/faCopy";
 
 const ImagePicker = (props) => {
-    const {viewport, handleCrop} = props
+    const {viewport, handleImage} = props
     const [croppie, setCroppie] = useState(null);
     const [file, setFile] = useState(null);
 
@@ -79,7 +79,11 @@ const ImagePicker = (props) => {
         }).then((blob) => {
             const newFile = new File([blob], file.fileName, {type: file.file.type});
             console.log('%cFile: ImagePicker.js, Function: newF, Line 78 newFile: ', 'color: pink', newFile);
-            // handleCrop(newFile);
+            setFile({
+                ...file,
+                file: blob
+            })
+            handleImage(file);
         })
     }
 
@@ -87,7 +91,7 @@ const ImagePicker = (props) => {
         <div style={{background: "grey", width: '100%', padding: '2rem'}}>
             here
             {!file && (
-                <input type='file' accept='image/*' onChange={handleSelectImage} />
+                <input type='file' name='placeImage' accept='image/*' onChange={handleSelectImage} />
             )}
             {/*<img src={file?.preview} alt={'whatever'} id={'image-helper'} />*/}
             <div id={'image-helper'} />
@@ -99,7 +103,7 @@ const ImagePicker = (props) => {
 ImagePicker.propTypes = {
     viewport: PropTypes.object.isRequired,
     file: PropTypes.object,
-    handleCrop: PropTypes.func.isRequired,
+    handleImage: PropTypes.func.isRequired,
 }
 
 export default ImagePicker;

@@ -10,6 +10,7 @@ import ImagePicker from "../ImagePicker/ImagePicker";
 
 const NewPlace = () => {
     const [place, setPlace] = useState({});
+    const [imageData, setImageData] = useState({});
     const history = useHistory();
     // TODO: Not possible to edit a value once it was recently edited
     const handleChange = e => {
@@ -20,47 +21,35 @@ const NewPlace = () => {
         })
     }
     const handleSave = async () => {
-        /**
-         * const finalDto = JSON.stringify({
-         *       ...this.state.project,
-         *       versionList: [{...this.state.currentVersionData}]
-         *     });
-         *     const blob = new Blob([finalDto], {type: 'application/json'});
-         *     let formData = new FormData();
-         *     formData.append('dto', blob);
-         *     formData.append('isRequest', final);
-         *     Object.keys(this.state.fileObjects).forEach(mainKey => {
-         *       Object.keys(this.state.fileObjects[mainKey]).forEach(key => {
-         *         formData.append(
-         *           this.state.currentVersionData.value.filesUpload[mainKey].varName,
-         *           this.state.fileObjects[mainKey][key],
-         *           this.state.fileObjects[mainKey][key].name
-         *         );
-         *       });
-         *     });
-         *     axios
-         *       .put(`${apiAcquisitionUrl}/evaluation/bc`, formData)
-         *       .then(() => {
-         *         this.callToApi(this.state.queryParams.id);
-         *       })
-         *       .catch(error => {
-         *         handleCommonSavingError(error, this.props.onSave);
-         *         this.setState({isLoading: false});
-         *       });
-         * */
+        console.log('%cFile: NewPlace.js, Function: handleSave, Line 52 place: ', 'color: pink', place);
+        console.log('%cFile: NewPlace.js, Function: handleSave, Line 53 imageData: ', 'color: pink', imageData);
         try {
-            const response = await axios.post('http://localhost:9000/api/v1/places', place, {
+            let formData = new FormData();
+            console.log('%cFile: NewPlace.js, Function: handleSave, Line 28 imageData: ', 'color: pink', imageData);
+            formData.append(
+                'placeImage',
+                imageData.file,
+                imageData.name
+            );
+            const finalPlaceInfo = JSON.stringify(place);
+            formData.append('placeData', `${finalPlaceInfo}`);
+            const response = await axios.post('http://localhost:9000/api/v1/places', formData, {
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'multipart/form-data',
                     'Accept': '*/*',
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Allow-Headers': '*',
                 }
             });
+            console.log('%cFile: NewPlace.js, Function: handleSave, Line 72 response: ', 'color: pink', response);
             history.goBack();
         } catch (error) {
             console.log('%cFile: NewPlace.js, Function: handleSave, Line 20 error: ', 'color: pink', error);
         }
+    }
+
+    const handleImage = imageData => {
+        setImageData(imageData);
     }
     return (
         <div>
@@ -71,7 +60,7 @@ const NewPlace = () => {
             <div>
                 <div>
                     <p>here it will be the image picker</p>
-                    <ImagePicker viewport={{width: 100, height: 100, type: 'square'}} handleCrop={(file) => console.log('%c crop', 'color: #ecb1f2; font-style:italic', file)} file={place?.image} />
+                    <ImagePicker viewport={{width: 100, height: 100, type: 'square'}} handleImage={handleImage} file={place?.image} />
                 </div>
                 <div>
                     <TextField

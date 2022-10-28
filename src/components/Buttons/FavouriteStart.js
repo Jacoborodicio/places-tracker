@@ -7,7 +7,7 @@ export const FavouriteStart = ({onClick, active, name, disabled, onlyActive}) =>
     return !onlyActive ? <FontAwesomeIcon onClick={() => !disabled && onClick({target: {name, value: !active}})} icon={faStar} color={active ? '#FFEC00' : '#C1C1C1'} />
         : active ? <FontAwesomeIcon onClick={() => !disabled && onClick({target: {name, value: !active}})} icon={faStar} color={active ? '#FFEC00' : '#C1C1C1'} /> : null
 }
-FavouriteStart.PropTypes = {
+FavouriteStart.propTypes = {
     onClick: PropTypes.func,
     active: PropTypes.bool,
     disabled: PropTypes.bool,

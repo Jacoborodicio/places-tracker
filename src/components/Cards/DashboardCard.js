@@ -97,7 +97,7 @@ const DashboardCard = ({place}) => {
         <CardContainer>
             <CardHeader>
                 <CardLogo>
-                    <img src={image ? image : DefaultImg} alt={imageDescription} />
+                    <img src={image ? 'http://localhost:9000/places-tracker/' + image : DefaultImg} alt={imageDescription} />
                     <ImageFooter>
                         <h3>Bayern</h3>
                     </ImageFooter>
