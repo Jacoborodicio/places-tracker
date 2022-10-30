@@ -40,6 +40,9 @@ const TopSection = styled('div')`
     }
   }
   & .imgSection {
+    width: 50%;
+    overflow: hidden;
+    height: 300px;
     & .footerImageSection {
       & .text {
         width: 100%;
@@ -115,7 +118,7 @@ const Details = () => {
             <Header actionSection={{start: <Button secondary back />, middle: <h1>{place['name']}</h1>, end: <Button secondary onClick={handleDelete} icon={<FontAwesomeIcon icon={faTrash} color={'#90DCB3'} title='Delete' />} /> }} />
             <TopSection>
                 <div className={'imgSection'}>
-                    <img src={place?.image ? place.image : DefaultImg} alt={place.imageDescription} />
+                    <img src={place?.image ? 'http://localhost:9000/places-tracker/' + place.image : DefaultImg} alt={place.imageDescription} />
                     <div className={'footerImageSection'}>
                         <p className='text'>{place?.imageDescription}</p>
                     </div>
