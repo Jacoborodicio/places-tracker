@@ -45,6 +45,9 @@ export const PlaceForm = () => {
                     value={place?.name}
                     onChange={handleChange}
                     fullWidth
+                    sx={(theme => (
+                        {input: {color: theme['text'].primary}}
+                    ))}
                     />
             </div>
             <div>
@@ -54,6 +57,9 @@ export const PlaceForm = () => {
                     value={place?.description}
                     onChange={handleChange}
                     fullWidth
+                    sx={(theme => (
+                        {input: {color: theme['text'].primary}}
+                    ))}
                 />
             </div>
             <div>
@@ -64,6 +70,9 @@ export const PlaceForm = () => {
                     onChange={handleChange}
                     type='number'
                     fullWidth
+                    sx={(theme => (
+                        {input: {color: theme['text'].primary}}
+                    ))}
                 />
             </div>
             <div>
@@ -74,6 +83,9 @@ export const PlaceForm = () => {
                     onChange={handleChange}
                     type='number'
                     fullWidth
+                    sx={(theme => (
+                        {input: {color: theme['text'].primary}}
+                    ))}
                 />
             </div>
             <div>
@@ -83,6 +95,9 @@ export const PlaceForm = () => {
                     value={place?.address}
                     onChange={handleChange}
                     fullWidth
+                    sx={(theme => (
+                        {input: {color: theme['text'].primary}}
+                    ))}
                 />
             </div>
             <div>
@@ -93,6 +108,9 @@ export const PlaceForm = () => {
                     onChange={handleChange}
                     type='number'
                     fullWidth
+                    sx={(theme => (
+                        {input: {color: theme['text'].primary}}
+                    ))}
                 />
             </div>
             <div>
@@ -101,14 +119,20 @@ export const PlaceForm = () => {
                     label='Distance Unit'
                     value={place?.distanceUnit}
                     onChange={handleChange}
+                    sx={(theme => (
+                        {input: {color: theme['text'].primary}}
+                    ))}
                     fullWidth
                 />
             </div>
-            <div>
+            <div style={{display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                <div style={{marginRight: '3rem'}}>
+                    <p>Set as favourite</p>
+                </div>
                 <FavouriteStart name='favourite' onClick={handleChange} active={place?.favourite} />
             </div>
-            <div>
-                <Button onClick={handleSave}>Create</Button>
+            <div style={{display: 'flex', alignItems: 'center'}}>
+                <Button style={{width: '100%'}} onClick={handleSave}>Create</Button>
             </div>
         </FormContainer>
     )

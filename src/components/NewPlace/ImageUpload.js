@@ -25,6 +25,9 @@ export const ImageUpload = () => {
                     style={{width: '100%'}}
                     value={place?.imageDescription}
                     onBlur={handleChange}
+                    sx={(theme => (
+                        {input: {color: theme['text'].primary}}
+                    ))}
                 />
             </div>
         </ImageMainContainer>
