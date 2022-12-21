@@ -29,6 +29,7 @@
     "stylis": "^4.0.13"
   },
   "devDependencies": {
+    "prop-types": "latest",
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-react": "^7.16.5",

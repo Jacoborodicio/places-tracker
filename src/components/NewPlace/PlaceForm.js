@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 import {PlaceContext} from "./NewPlace";
 import Button from "../Buttons/Button";
 import {FavouriteStart} from "../Buttons/FavouriteStart";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
-
 
 const FormContainer = styled('div')`
   background-color: ${({theme}) => theme.palette.primary.light};
@@ -19,7 +16,7 @@ const FormContainer = styled('div')`
 `;
 
 export const PlaceForm = () => {
-    const {place, handleChange, handleImage, handleSave} = useContext(PlaceContext);
+    const {place, handleChange, handleSave} = useContext(PlaceContext);
 
     return (
         <FormContainer>

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Button from '../Buttons/Button';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Croppie from 'croppie';
 import "croppie/croppie.css"
-import {faCopy} from "@fortawesome/free-solid-svg-icons/faCopy";
 import {styled} from "@mui/material";
 
 const ImageUploadInput = styled('input')`
