@@ -2,13 +2,15 @@
 import React from 'react';
 import {styled} from "@mui/material";
 import {jsx} from "@emotion/react";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory} from "react-router-dom";
 import DefaultImg from '../../images/defaultCodeImg.png';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
 import Button from "../Buttons/Button";
 import {FavouriteStart} from "../Buttons/FavouriteStart";
 import {faThumbsUp} from "@fortawesome/free-solid-svg-icons/faThumbsUp";
+import axios from "axios";
+import {faTrash} from "@fortawesome/free-solid-svg-icons";
 
 const CardContainer = styled('div')`
   height: 100%;
@@ -17,6 +19,7 @@ const CardContainer = styled('div')`
   border-radius: .5rem;
   color: whitesmoke;
   background-color: ${({theme}) => theme.palette.secondary.light};
+  cursor: pointer;
   //border: 1px solid var(--borders-accent-dark)
 `;
 
@@ -91,10 +94,16 @@ const ContentFooter = styled('div')`
   justify-content: flex-end;
 `;
 
-const DashboardCard = ({place}) => {
+const DashboardCard = ({place, handleDelete}) => {
     const {image, imageDescription, name, description, thumbsUp, favourite,  _id} = place;
+    const history = useHistory();
+    const handleDeleteLocal = (e, id) => {
+        // Needed to not fire the global event listener of the car (going to details page)
+        e.stopPropagation();
+        handleDelete(id);
+    }
     return (
-        <CardContainer>
+        <CardContainer onClick={() => history.push(`/details/${_id}`)}>
             <CardHeader>
                 <CardLogo>
                     <img src={image ? 'http://localhost:9000/places-tracker/' + image : DefaultImg} alt={imageDescription} />
@@ -118,7 +127,7 @@ const DashboardCard = ({place}) => {
             </CardHeader>
             <CardFooter>
                 <ContentFooter>
-                    <Button title={'Details'} link={`/details/${_id}`}/>
+                    <Button secondary onClick={e => handleDeleteLocal(e, _id)} icon={<FontAwesomeIcon icon={faTrash} color={'#90DCB3'} title='Delete' />} />
                 </ContentFooter>
             </CardFooter>
         </CardContainer>

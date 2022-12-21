@@ -24,21 +24,25 @@ const GlobalContainer = styled('div')`
 const Recent = () => {
     const [recentPlaces, setRecentPlaces] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const [updateState, setUpdateState] = useState(true);
+    const handleDelete = async (_id) => {
+        try {
+            await axios.delete(`http://localhost:9000/api/v1/places/${_id}`);
+            setUpdateState(true);
+        } catch (error) {console.log('%c Error while deleting a place', 'color: #ecb1f2; font-style:italic');}
+    }
     useEffect(async () => {
-        const response = await axios.get('http://localhost:9000/api/v1/places');
-        console.log('%cFile: Recent.js, Function: response, Line 31 response: ', 'color: pink', response);
-        setRecentPlaces(response.data);
-        setLoading(false);
-    }, [])
+        if (updateState) {
+            const response = await axios.get('http://localhost:9000/api/v1/places');
+            setRecentPlaces(response.data);
+            setUpdateState(false);
+            setLoading(false);
+        }
+    }, [updateState])
     return loading ? <p>loading...</p> : (
         <GlobalContainer>
-            {console.log('%cFile: Recent.js, Function: Recent, Line 36 recentPlaces: ', 'color: pink', recentPlaces)}
-            {/*{Places.map(place => (*/}
-            {/*    <DashboardCard key={place.id} place={place}/>*/}
-            {/*))}*/}
             {recentPlaces.map(place => (
-                <DashboardCard key={place['_id']} place={place}/>
+                <DashboardCard key={place['_id']} place={place} handleDelete={handleDelete}/>
             ))}
         </GlobalContainer>
     )

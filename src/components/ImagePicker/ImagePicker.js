@@ -45,14 +45,9 @@ const ImagePicker = (props) => {
     }, [file])
 
     const handleSelectImage = e => {
-        console.log('%cFile: ImagePicker.js, Function: handleSelectImage, Line 38 image: ', 'color: pink', e.target.files);
         const uploadedFile = e.target.files[0]; // Single selection
-        console.log('%cFile: ImagePicker.js, Function: handleSelectImage, Line 42 uploadedFile: ', 'color: pink', uploadedFile);
-        // setFile(uploadedFile);
         const newFile = new Blob([uploadedFile], {type: uploadedFile.type} );
-        console.log('%cFile: ImagePicker.js, Function: handleSelectImage, Line 44 newFile: ', 'color: pink', newFile);
         // const x = new File([newFile], uploadedFile.name, {type: uploadedFile.type})
-        console.log('%cFile: ImagePicker.js, Function: handleSelectImage, Line 44 newFile: ', 'color: pink', newFile);
         setFile({
             file: newFile,
             fileName: uploadedFile.name,
@@ -76,8 +71,6 @@ const ImagePicker = (props) => {
     }
 
     const handleSelect = () => {
-        console.log('%c in select img', 'color: #ecb1f2; font-style:italic');
-        console.log('%cFile: ImagePicker.js, Function: handleSelect, Line 56 viewport: ', 'color: pink', viewport);
         croppie.result({
             type: 'blob',
             size: {
@@ -86,7 +79,6 @@ const ImagePicker = (props) => {
             }
         }).then((blob) => {
             const newFile = new File([blob], file.fileName, {type: file.file.type});
-            console.log('%cFile: ImagePicker.js, Function: newF, Line 78 newFile: ', 'color: pink', newFile);
             setFile({
                 ...file,
                 file: blob

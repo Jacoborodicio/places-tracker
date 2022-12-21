@@ -15,7 +15,6 @@ const NewPlace = () => {
     const history = useHistory();
     // TODO: Not possible to edit a value once it was recently edited
     const handleChange = e => {
-        console.log('%cFile: NewPlace.js, Function: handleChange, Line 13 e: ', 'color: pink', e);
         const {name, value} = e.target;
         setPlace({
             ...place,
@@ -23,11 +22,8 @@ const NewPlace = () => {
         })
     }
     const handleSave = async () => {
-        console.log('%cFile: NewPlace.js, Function: handleSave, Line 52 place: ', 'color: pink', place);
-        console.log('%cFile: NewPlace.js, Function: handleSave, Line 53 imageData: ', 'color: pink', imageData);
         try {
             let formData = new FormData();
-            console.log('%cFile: NewPlace.js, Function: handleSave, Line 28 imageData: ', 'color: pink', imageData);
             formData.append(
                 'placeImage',
                 imageData.file,
@@ -43,8 +39,7 @@ const NewPlace = () => {
                     'Access-Control-Allow-Headers': '*',
                 }
             });
-            console.log('%cFile: NewPlace.js, Function: handleSave, Line 72 response: ', 'color: pink', response);
-            history.goBack();
+            history.push('/');
         } catch (error) {
             console.log('%cFile: NewPlace.js, Function: handleSave, Line 20 error: ', 'color: pink', error);
         }

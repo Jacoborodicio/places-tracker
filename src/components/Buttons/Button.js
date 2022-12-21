@@ -28,12 +28,12 @@ const StyledButton = styled('button')`
 `;
 const Button = ({children, icon, back, title, link, secondary, onClick, style}) => {
     const history = useHistory();
-    const handleClick = () => {
-        onClick && onClick();
+    const handleClick = e => {
+        onClick && onClick(e);
         back ? history.push('/') : link ? history.push(link) : null;
     }
     return (
-        <StyledButton onClick={handleClick} secondary={secondary} style={style}>
+        <StyledButton onClick={e => handleClick(e)} secondary={secondary} style={style}>
             {back ? (<FontAwesomeIcon icon={faAngleDoubleLeft} color={'#90DCB3'}/>) : icon ? icon : null}
             {title && <p>{title}</p>}
             <p>{children}</p>
