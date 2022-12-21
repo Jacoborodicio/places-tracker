@@ -23,21 +23,6 @@ export const PlaceForm = () => {
 
     return (
         <FormContainer>
-            {/*<ImageFormContainer>*/}
-            {/*    <div>*/}
-            {/*        <p>here it will be the image picker</p>*/}
-            {/*        <ImagePicker viewport={{width: 100, height: 100, type: 'square'}} handleImage={handleImage} file={place?.image} />*/}
-            {/*    </div>*/}
-            {/*    <div>*/}
-            {/*        <TextField*/}
-            {/*            name='imageDescription'*/}
-            {/*            label='Image Description'*/}
-            {/*            value={place?.imageDescription}*/}
-            {/*            onBlur={handleChange}*/}
-            {/*        />*/}
-            {/*    </div>*/}
-            {/*</ImageFormContainer>*/}
-
             <div>
                 <TextField
                     name='name'
@@ -129,7 +114,7 @@ export const PlaceForm = () => {
                 <div style={{marginRight: '3rem'}}>
                     <p>Set as favourite</p>
                 </div>
-                <FavouriteStart name='favourite' onClick={handleChange} active={place?.favourite} />
+                <FavouriteStart name='favourite' onClick={handleChange} active={!!place?.favourite} />
             </div>
             <div style={{display: 'flex', alignItems: 'center'}}>
                 <Button style={{width: '100%'}} onClick={handleSave}>Create</Button>
