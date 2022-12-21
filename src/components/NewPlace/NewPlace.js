@@ -1,19 +1,21 @@
-import Button from "../Buttons/Button";
 import {useHistory} from "react-router-dom";
-import {TextField} from "@mui/material";
-import {useState} from "react";
+import {useState, createContext} from "react";
 import axios from "axios";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
-import {FavouriteStart} from "../Buttons/FavouriteStart";
-import ImagePicker from "../ImagePicker/ImagePicker";
+import {PlaceForm} from "./PlaceForm";
+import {styled} from "@mui/material";
+import {ImageUpload} from "./ImageUpload";
+export const PlaceContext = createContext(undefined);
 
+const NewPlaceContainer = styled('div')`
+  padding: 1rem;
+`;
 const NewPlace = () => {
     const [place, setPlace] = useState({});
     const [imageData, setImageData] = useState({});
     const history = useHistory();
     // TODO: Not possible to edit a value once it was recently edited
     const handleChange = e => {
+        console.log('%cFile: NewPlace.js, Function: handleChange, Line 13 e: ', 'color: pink', e);
         const {name, value} = e.target;
         setPlace({
             ...place,
@@ -52,91 +54,12 @@ const NewPlace = () => {
         setImageData(imageData);
     }
     return (
-        <div>
-            <p>Form to create a new place</p>
-            <Button onClick={() => history.goBack()}>
-                Cancel
-            </Button>
-            <div>
-                <div>
-                    <p>here it will be the image picker</p>
-                    <ImagePicker viewport={{width: 100, height: 100, type: 'square'}} handleImage={handleImage} file={place?.image} />
-                </div>
-                <div>
-                    <TextField
-                        name='imageDescription'
-                        label='Image Description'
-                        value={place?.imageDescription}
-                        onBlur={handleChange}
-                    />
-                </div>
-                <div>
-                    <TextField
-                        name='name'
-                        label='Name'
-                        value={place?.name}
-                        onBlur={handleChange}
-                        />
-                </div>
-                <div>
-                    <TextField
-                        name='description'
-                        label='Description'
-                        value={place?.description}
-                        onBlur={handleChange}
-                    />
-                </div>
-                <div>
-                    <TextField
-                        name='thumbsUp'
-                        label='Thumbs Up'
-                        value={place?.thumbsUp}
-                        onBlur={handleChange}
-                        type='number'
-                    />
-                </div>
-                <div>
-                    <TextField
-                        name='ratio'
-                        label='Ratio'
-                        value={place?.ratio}
-                        onBlur={handleChange}
-                        type='number'
-                    />
-                </div>
-                <div>
-                    <TextField
-                        name='address'
-                        label='Address'
-                        value={place?.address}
-                        onBlur={handleChange}
-                    />
-                </div>
-                <div>
-                    <TextField
-                        name='distance'
-                        label='Distance'
-                        value={place?.distance}
-                        onBlur={handleChange}
-                        type='number'
-                    />
-                </div>
-                <div>
-                    <TextField
-                        name='distanceUnit'
-                        label='Distance Unit'
-                        value={place?.distanceUnit}
-                        onBlur={handleChange}
-                    />
-                </div>
-                <div>
-                    <FavouriteStart name='favourite' onClick={handleChange} active={place?.favourite} />
-                </div>
-            </div>
-            <div>
-                <Button onClick={handleSave}>Create</Button>
-            </div>
-        </div>
+        <PlaceContext.Provider value={{place, handleChange, handleImage, handleSave}}>
+            <NewPlaceContainer>
+                <ImageUpload/>
+                <PlaceForm />
+            </NewPlaceContainer>
+        </PlaceContext.Provider>
     )
 }
 

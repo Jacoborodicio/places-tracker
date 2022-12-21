@@ -5,6 +5,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Croppie from 'croppie';
 import "croppie/croppie.css"
 import {faCopy} from "@fortawesome/free-solid-svg-icons/faCopy";
+import {styled} from "@mui/material";
+
+const ImageUploadInput = styled('input')`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+`;
 
 const ImagePicker = (props) => {
     const {viewport, handleImage} = props
@@ -88,14 +98,20 @@ const ImagePicker = (props) => {
     }
 
     return (
-        <div style={{background: "grey", width: '100%', padding: '2rem'}}>
-            here
+        <div>
             {!file && (
-                <input type='file' name='placeImage' accept='image/*' onChange={handleSelectImage} />
+                <>
+                    <Button title='Select image' style={{position: 'relative', marginBottom: '.25rem'}}>
+                        <ImageUploadInput type='file' name='placeImage' accept='image/*' onChange={handleSelectImage} />
+                    </Button>
+                </>
             )}
-            {/*<img src={file?.preview} alt={'whatever'} id={'image-helper'} />*/}
             <div id={'image-helper'} />
-            {file?.preview && croppie && <Button title='Crop' onClick={handleSelect} /> }
+            {file?.preview && croppie && (
+                <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '.5rem'}}>
+                    <Button title='Crop' onClick={handleSelect} style={{width: '11.5rem'}}/>
+                </div>
+            )}
         </div>
     )
 }

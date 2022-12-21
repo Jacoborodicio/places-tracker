@@ -5,8 +5,8 @@ const themes = {
         palette: {
             primary: {
                 main: '#222831',
-                light: '#222831',
-                dark: '#222831'},
+                light: '#3b3b41',
+                dark: '#1b1f25'},
             secondary: {
                 main: '#393E46',
                 light: '#393E46',
