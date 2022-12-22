@@ -33,8 +33,12 @@ const Recent = () => {
     }
     useEffect(async () => {
         if (updateState) {
-            const response = await axios.get('http://localhost:9000/api/v1/places');
-            setRecentPlaces(response.data);
+            try {
+                const response = await axios.get('http://localhost:9000/api/v1/places');
+                setRecentPlaces(response.data);
+            } catch (err) {
+                console.log('%cFile: Recent.js, Function: error, Line 39 error: ', 'color: pink', err)
+            }
             setUpdateState(false);
             setLoading(false);
         }

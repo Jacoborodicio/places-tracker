@@ -57,13 +57,10 @@ const AppBar = () => {
     const textColor = text.secondary;
     return (
         <AppBarContainer>
-            <div onClick={() => history.push('/')}>
+            <div style={{cursor: "pointer"}} onClick={() => history.push('/')}>
                 <img src={Logo} alt={'Logo image'} />
             </div>
             <SectionsContainer>
-                {/*<div className={'sectionItem'} onClick={() => history.push('/recent')}>*/}
-                {/*    <p>Explore</p>*/}
-                {/*</div>*/}
                 <div className={'sectionContainer'} onClick={() => history.push('/recent')}>
                     <FontAwesomeIcon icon={faHistory} color={textColor} />
                     <p>Recent</p>
@@ -81,7 +78,7 @@ const AppBar = () => {
                 <Button onClick={() => {
                     dispatch(changeTheme(currentTheme === 'dark' ? {currentTheme: 'light'} : {currentTheme: 'dark'}))
                 }}>
-                    Switch Theme
+                    Theme
                 </Button>
                 <CreateButton />
             </div>

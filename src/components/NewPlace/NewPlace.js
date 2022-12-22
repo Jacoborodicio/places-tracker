@@ -15,6 +15,7 @@ const NewPlace = () => {
     const history = useHistory();
     // TODO: Not possible to edit a value once it was recently edited
     const handleChange = e => {
+        console.log('%cFile: NewPlace.js, Function: handleChange, Line 18 e.target: ', 'color: pink', e.target);
         const {name, value} = e.target;
         setPlace({
             ...place,

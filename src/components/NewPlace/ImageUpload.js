@@ -8,13 +8,12 @@ const ImageMainContainer = styled('div')`
   margin-bottom: 2rem;
   width: 100%;
   border-radius: .25rem;
-  //border: 1px solid ${({theme}) => theme.text.secondary};
   background-color: ${({theme}) => theme.palette.primary.light};
 `;
 
 export const ImageUpload = () => {
     const {place, handleChange, handleImage} = useContext(PlaceContext);
-
+    console.log('%cFile: ImageUpload.js, Function: ImageUpload, Line 16 place: ', 'color: pink', place);
     return (
         <ImageMainContainer>
             <ImagePicker viewport={{width: 100, height: 100, type: 'square'}} handleImage={handleImage} file={place?.image} />
@@ -24,7 +23,7 @@ export const ImageUpload = () => {
                     label='Image Description'
                     style={{width: '100%'}}
                     value={place?.imageDescription}
-                    onBlur={handleChange}
+                    onChange={handleChange}
                     sx={(theme => (
                         {input: {color: theme['text'].primary}}
                     ))}
