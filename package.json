@@ -23,13 +23,13 @@
     "croppie": "^2.6.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-query": "^3.39.2",
     "react-redux": "^7.2.6",
     "react-router-dom": "5.2.0",
     "redux": "^4.1.2",
     "stylis": "^4.0.13"
   },
   "devDependencies": {
-    "prop-types": "latest",
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-react": "^7.16.5",
@@ -40,6 +40,7 @@
     "css-loader": "^6.5.1",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
+    "prop-types": "latest",
     "react-refresh": "^0.11.0",
     "redux-devtools": "^3.7.0",
     "sass": "^1.45.0",

@@ -1,3 +1,10 @@
+const baseApiUrl = 'http://localhost:9000/api/v1/';
+
+export const allPlacesApi = () => `${baseApiUrl}places`;
+export const deletePlaceByIdApi = id => `${baseApiUrl}places/${id}`;
+
+
+// OLD?
 export const mainTopics = [
     {
         id: 1,
@@ -143,8 +150,6 @@ export const testimonials = [
         declaration: "Before joining the bootcamp, I’ve never written a line of code. I needed some structure from professionals who can help me learn programming step by step. I was encouraged to enroll by a former student of theirs who can only say wonderful things about the program. The entire curriculum and staff did not disappoint. They were very hands-on and I never had to wait long for assistance. The agile team project, in particular, was outstanding. It took my learning to the next level in a way that no tutorial could ever have. In fact, I’ve often referred to it during interviews as an example of my developent experience. It certainly helped me land a job as a full-stack developer after receiving multiple offers. 100% recommend!"
     },
 ]
-
-
 export const testimonialResources = {
     daniel: require('../images/image-daniel.jpg'),
     jonathan: require('../images/image-jonathan.jpg'),
