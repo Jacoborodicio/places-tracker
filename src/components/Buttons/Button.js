@@ -41,11 +41,11 @@ const Button = ({children, icon, back, title, link, secondary, onClick, style}) 
     )
 }
 
-Button.PropTypes = {
+Button.propTypes = {
     style: PropTypes.object,
 }
 
-Button.PropTypes.default = {
+Button.default = {
     style: {}
 }
 
