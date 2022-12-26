@@ -7,11 +7,13 @@ import {styled} from "@mui/material";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMapSigns, faTrash} from "@fortawesome/free-solid-svg-icons";
 import Annotations from "./Annotations/Annotations";
-import axios from "axios";
 import Header from "../Header/Header";
 import {faThumbsUp} from "@fortawesome/free-solid-svg-icons/faThumbsUp";
 import {FavouriteStart} from "../Buttons/FavouriteStart";
 import DefaultImg from '../../images/defaultCodeImg.png';
+import {useQuery} from "react-query";
+import {getPlaceById} from "../../helpers/api";
+import {useDeletePlace} from "../../hooks/reactQueryCustomHooks";
 
 const TopSection = styled('div')`
   display: flex;
@@ -46,7 +48,7 @@ const TopSection = styled('div')`
     & .footerImageSection {
       & .text {
         width: 100%;
-        text-align: center;
+        text-align: left;
         font-style: italic;
         color: var(--text-secondary-dark)
       }
@@ -95,24 +97,11 @@ const DetailsContainer = styled('div')`
   
 `;
 const Details = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [place, setPlace] = useState({});
     const { id } = useParams();
+    const {isLoading, isError, data: place, error} = useQuery(['placeById'], () => getPlaceById(id));
+    const {mutate: deletePlace, isError: deleteIsError, isLoading: deleteLoading, error: deleteError} = useDeletePlace('placeById');
+    const handleDelete = id => deletePlace(id);
 
-    const timer = async ms => new Promise(resolve => setTimeout(resolve, ms));
-
-    useEffect(async () => {
-        const response = await axios.get(`http://localhost:9000/api/v1/places/${id}`);
-            setPlace(response.data);
-            setIsLoading(false);
-    }, []);
-
-    const handleDelete = async () => {
-        try {
-            await axios.delete(`http://localhost:9000/api/v1/places/${id}`);
-            history.back();
-        } catch (error) {console.log('%c Error while deleting a place', 'color: #ecb1f2; font-style:italic');}
-    }
     return isLoading ? <p>...holding id...</p> : (
         <DetailsContainer>
             <Header actionSection={{start: <Button secondary back />, middle: <h1>{place['name']}</h1>, end: <Button secondary onClick={handleDelete} icon={<FontAwesomeIcon icon={faTrash} color={'#90DCB3'} title='Delete' />} /> }} />
@@ -129,9 +118,9 @@ const Details = () => {
                         <p>types here!</p>
                     </div>
                     <div className='ratesContainer'>
-                        {place.thumbsUp && (<div className='thumbsUp'>
+                        {place['thumbsUp'] && (<div className='thumbsUp'>
                                 <FontAwesomeIcon icon={faThumbsUp} color={'#90DCB3FF'} size={'sm'}/>
-                                <p className='text'>{place.thumbsUp}</p>
+                                <p className='text'>{place['thumbsUp']}</p>
                             </div>
                         )}
                         <div className='favourite'>
@@ -144,8 +133,8 @@ const Details = () => {
                 <div className={'addressContainer'}>
                     <FontAwesomeIcon icon={faMapSigns}/>
                     <div className={'addressComposedContainer'}>
-                        <p className={'address'}>{place.address}</p>
-                        <p className={'distance'}>{`(${place.distance} ${place.distanceUnit})`}</p>
+                        {place?.address && <p className={'address'}>{place.address}</p>}
+                        {place?.distance && place?.distanceUnit && <p className={'distance'}>{`(${place.distance} ${place.distanceUnit})`}</p>}
                     </div>
                 </div>
                 <div className="descriptionContainer">
@@ -153,7 +142,7 @@ const Details = () => {
                 </div>
             </ContentSection>
             <div className={'annotationsContainer'}>
-                <Annotations annotations={place.annotations} />
+                {place?.annotations && <Annotations annotations={place?.annotations}/>}
             </div>
         </DetailsContainer>
     )
