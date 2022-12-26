@@ -3,6 +3,9 @@ import {Places} from "../../helpers/data.dummy.dev";
 import DashboardCard from "../Cards/DashboardCard";
 import {styled} from "@mui/material";
 import axios from "axios";
+import {useQuery} from "react-query";
+import {getFavouritePlaces} from "../../helpers/api";
+import {useDeletePlace} from "../../hooks/reactQueryCustomHooks";
 
 const GlobalContainer = styled('div')`
   box-sizing: border-box;
@@ -22,28 +25,11 @@ const GlobalContainer = styled('div')`
   }
 `;
 const Favourite = () => {
-    const [favouritePlaces, setFavouritePlaces] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [updateState, setUpdateState] = useState(true);
-    const handleDelete = async (_id) => {
-        try {
-            await axios.delete(`http://localhost:9000/api/v1/places/${_id}`);
-            setUpdateState(true);
-        } catch (error) {console.log('%c Error while deleting a place', 'color: #ecb1f2; font-style:italic');}
-    }
-    useEffect(async () => {
-        if (updateState) {
-            try {
-                const response = await axios.get('http://localhost:9000/api/v1/places/favourite');
-                setFavouritePlaces(response.data);
-            } catch (err) {
-                console.log('%cFile: Recent.js, Function: error, Line 39 error: ', 'color: pink', err)
-            }
-            setUpdateState(false);
-            setLoading(false);
-        }
-    }, [updateState])
-    return loading ? <p>loading...</p> : (
+    const {isLoading, isError, data: favouritePlaces, error} = useQuery(['favouritePlaces'], getFavouritePlaces);
+    const {mutate: deletePlace, isError: deleteIsError, isLoading: deleteLoading, error: deleteError} = useDeletePlace('favouritePlaces');
+    const handleDelete = id => deletePlace(id);
+
+    return isLoading ? <p>loading...</p> : (
         <GlobalContainer>
             {favouritePlaces.map(place => (
                 <DashboardCard key={place['_id']} place={place} handleDelete={handleDelete}/>

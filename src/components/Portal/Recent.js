@@ -24,7 +24,7 @@ const GlobalContainer = styled('div')`
 `;
 const Recent = () => {
     const {isLoading, isError, data: places, error} = useQuery(['allPlaces'], getAllPlaces);
-    const {mutate: deletePlace, isError: deleteIsError, isLoading: deleteLoading, error: deleteError} = useDeletePlace();
+    const {mutate: deletePlace, isError: deleteIsError, isLoading: deleteLoading, error: deleteError} = useDeletePlace('allPlaces');
 
     const handleDelete = id => deletePlace(id);
 

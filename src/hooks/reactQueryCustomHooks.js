@@ -13,10 +13,10 @@ const handleAddPlace = placeFormData => axios.post('http://localhost:9000/api/v1
     }
 });
 
-export const useDeletePlace = () => {
+export const useDeletePlace = (queryKey) => {
     const queryClient = useQueryClient();
     return useMutation(handleDeletePlace, {
-        onSuccess: () => queryClient.invalidateQueries(['allPlaces']),
+        onSuccess: () => queryClient.invalidateQueries([`${queryKey}`]),
         onError: () => console.log('%c error deleting!', 'color: #ecb1f2; font-style:italic')
     })
 }

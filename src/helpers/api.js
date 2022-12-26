@@ -8,6 +8,11 @@ export const getAllPlaces = () => {
                 .catch(err => console.log('%cFile: api.js, Function: err, Line 9 err: ', 'color: pink', err))
 }
 
+export const getFavouritePlaces = () => {
+    return axios.get('http://localhost:9000/api/v1/places/favourite')
+        .then(({data}) => data)
+        .catch(err => console.log('%cFile: api.js, Function: err, Line 14 err: ', 'color: pink', err))
+}
 // export const getAllPlaces = () => {
 //     return async () => {
 //         console.log('%c inside', 'color: #ecb1f2; font-style:italic');
