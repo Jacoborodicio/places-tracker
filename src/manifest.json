@@ -51,10 +51,10 @@
       "purpose": "maskable any"
     }
   ],
-  "start_url": "/places-tracker/?source=pwa",
+  "start_url": "/places/?source=pwa",
   "background_color": "#222831",
   "display": "standalone",
-  "scope": "/places-tracker/",
+  "scope": "/places/",
   "theme_color": "#222831",
   "description": "A place where save & share your favourite locations"
 }

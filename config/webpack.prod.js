@@ -24,6 +24,7 @@ const productionConfig = {
                 from: './src/manifest.json',
                 to: 'manifest.json'
             },
+                { from: `./src/favicon.ico`, to: 'favicon.ico' },
                 {
                     from: './src/assets/icons'
                 }]

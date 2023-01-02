@@ -2,14 +2,14 @@ import {useMutation, useQueryClient} from "react-query";
 import axios from "axios";
 
 export const setLocationPath = path => window.location.href = path;
+// const baseApiUrl = process.env["REACT_APP_API_URL "];
+const baseApiUrl = 'https://jacoborodicio.com/api/v1';
 
-const handleDeletePlace = id => axios.delete(`http://localhost:9000/api/v1/places/${id}`);
-const handleAddPlace = placeFormData => axios.post('http://localhost:9000/api/v1/places', placeFormData, {
+const handleDeletePlace = id => axios.delete(`${baseApiUrl}/places/${id}`);
+const handleAddPlace = placeFormData => axios.post(`${baseApiUrl}/places`, placeFormData, {
     headers: {
         'Content-Type': 'multipart/form-data',
         'Accept': '*/*',
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': '*',
     }
 });
 
@@ -23,7 +23,7 @@ export const useDeletePlace = (queryKey) => {
 
 export const useAddPlace = () => {
     return useMutation(handleAddPlace, {
-        onSuccess: () => setLocationPath('/places-tracker/'),
+        onSuccess: () => setLocationPath('/places/'),
         onError: () => console.log('%c Error', 'color: #ecb1f2; font-style:italic')
     })
 }

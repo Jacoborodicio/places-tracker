@@ -1,9 +1,9 @@
 {
-  "name": "places-tracker",
+  "name": "places",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "homepage": "/places-tracker",
+  "homepage": "/places",
   "scripts": {
     "build": "webpack --mode=production --config config/webpack.prod.js",
     "start": "webpack serve --config config/webpack.dev.js"

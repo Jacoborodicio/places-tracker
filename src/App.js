@@ -21,7 +21,7 @@ const Details = lazy(() => import('./components/Details/Details'));
 // const AppBar = lazy(() => import('./components/AppBar/AppBar'));
 // Attached customized key to styling classes
 const myCache = createCache({
-    key: 'places-tracker',
+    key: 'places',
     stylesPlugins: [
         prefixer
     ],
@@ -29,7 +29,7 @@ const myCache = createCache({
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('https://jacoborodicio.com/places-tracker/service-worker.js')
+        navigator.serviceWorker.register('https://jacoborodicio.com.com/places/service-worker.js')
             .then(registration => {
                 console.log('File: index.js, Function: ServiceWorker registration, Line 7 --> SW registered, registration: ', registration);
             }).catch(registrationError => console.log('File: index.js, Function: SW registration error: , Line 8 --> registrationError: ', registrationError));
@@ -48,7 +48,7 @@ const App = () => {
             <ThemeProvider theme={customTheme}>
             <Container {...containerProps}>
 
-            <BrowserRouter basename={'/places-tracker'}>
+            <BrowserRouter basename={'/places'}>
                 <Route exact path={'/'}>
                     <Suspense fallback={''}>
                         <Portal width={width} height={height}/>
