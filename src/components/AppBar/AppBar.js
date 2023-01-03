@@ -61,18 +61,18 @@ const AppBar = () => {
                 <img src={Logo} alt={'Logo image'} />
             </div>
             <SectionsContainer>
-                <div className={'sectionContainer'} onClick={() => history.push('/recent')}>
-                    <FontAwesomeIcon icon={faHistory} color={textColor} />
-                    <p>Recent</p>
-                </div>
+                {/*<div className={'sectionContainer'} onClick={() => history.push('/recent')}>*/}
+                {/*    <FontAwesomeIcon icon={faHistory} color={textColor} />*/}
+                {/*    <p>Recent</p>*/}
+                {/*</div>*/}
                 <div className={'sectionContainer'} onClick={() => history.push('/favourite')}>
                     <FontAwesomeIcon icon={faStar} color={textColor} />
                     <p>Favourites</p>
                 </div>
-                <div className={'sectionContainer'} onClick={() => history.push('/configuration')}>
-                    <FontAwesomeIcon icon={faCogs} color={textColor} />
-                    <p>Configuration</p>
-                </div>
+                {/*<div className={'sectionContainer'} onClick={() => history.push('/configuration')}>*/}
+                {/*    <FontAwesomeIcon icon={faCogs} color={textColor} />*/}
+                {/*    <p>Configuration</p>*/}
+                {/*</div>*/}
             </SectionsContainer>
             <div className={'actionsContainer'}>
                 <Button onClick={() => {

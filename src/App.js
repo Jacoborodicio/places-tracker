@@ -85,16 +85,16 @@ const App = () => {
                         <NewPlace />
                     </Suspense>
                 </Route>
-                <Route path={'/recent'}>
-                    <Suspense fallback={''}>
-                        <p>It's gonna be like portal (for mobile versions only) once I refactor Recent component into a reusable one</p>
-                    </Suspense>
-                </Route>
-                <Route path={'/configuration'}>
-                    <Suspense fallback={''}>
-                        <p>Configuration section will be live here!</p>
-                    </Suspense>
-                </Route>
+                {/*<Route path={'/recent'}>*/}
+                {/*    <Suspense fallback={''}>*/}
+                {/*        <p>It's gonna be like portal (for mobile versions only) once I refactor Recent component into a reusable one</p>*/}
+                {/*    </Suspense>*/}
+                {/*</Route>*/}
+                {/*<Route path={'/configuration'}>*/}
+                {/*    <Suspense fallback={''}>*/}
+                {/*        <p>Configuration section will be live here!</p>*/}
+                {/*    </Suspense>*/}
+                {/*</Route>*/}
             <AppBar />
             </BrowserRouter>
             </Container>

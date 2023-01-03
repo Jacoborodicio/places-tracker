@@ -12,11 +12,10 @@ const ImageMainContainer = styled('div')`
 `;
 
 export const ImageUpload = () => {
-    const {place, handleChange, handleImage} = useContext(PlaceContext);
-    console.log('%cFile: ImageUpload.js, Function: ImageUpload, Line 16 place: ', 'color: pink', place);
+    const {place, handleChange} = useContext(PlaceContext);
     return (
         <ImageMainContainer>
-            <ImagePicker viewport={{width: 100, height: 100, type: 'square'}} handleImage={handleImage} file={place?.image} />
+            <ImagePicker viewport={{width: 100, height: 100, type: 'square'}} file={place?.image} />
             <div>
                 <TextField
                     name='imageDescription'

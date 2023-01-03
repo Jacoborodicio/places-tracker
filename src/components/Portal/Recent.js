@@ -30,7 +30,7 @@ const Recent = () => {
 
     return isLoading ? <p>loading...</p> : (
         <GlobalContainer>
-            {places.map(place => (
+            {places?.map(place => (
                 <DashboardCard key={place['_id']} place={place} handleDelete={handleDelete}/>
             ))}
         </GlobalContainer>

@@ -15,7 +15,6 @@ const NewPlace = () => {
     const [imageData, setImageData] = useState({});
     const history = useHistory();
     const {mutate: addPlace, isLoading: addIsLoading, isError: addIsError, error: addError} = useAddPlace();
-    // TODO: Not possible to edit a value once it was recently edited
     const handleChange = e => {
         const {name, value} = e.target;
         setPlace({
@@ -27,7 +26,6 @@ const NewPlace = () => {
     const handleSave = async () => {
 
         let formData = new FormData();
-        console.log('%cFile: NewPlace.js, Function: handleSave, Line 30 imageData: ', 'color: pink', imageData);
         Object.keys(imageData).length > 0 && formData.append(
             'placeImage',
             imageData.file,
@@ -38,10 +36,8 @@ const NewPlace = () => {
         addPlace(formData);
     }
 
-    const handleImage = imageData => {
-        console.log('%cFile: NewPlace.js, Function: handleImage, Line 42 imageData: ', 'color: pink', imageData);
-        setImageData(imageData);
-    }
+    const handleImage = imageData => setImageData(imageData);
+
     return (
         <PlaceContext.Provider value={{place, handleChange, handleImage, handleSave}}>
             <NewPlaceContainer>

@@ -137,7 +137,7 @@ const Details = () => {
                     <FontAwesomeIcon icon={faMapSigns}/>
                     <div className={'addressComposedContainer'}>
                         {place?.address && <p className={'address'}>{place.address}</p>}
-                        {place?.distance && place?.distanceUnit && <p className={'distance'}>{`(${place.distance} ${place.distanceUnit})`}</p>}
+                        {place?.distance && place?.distanceUnit ? <p className={'distance'}>{`(${place.distance} ${place.distanceUnit})`}</p> : ''}
                     </div>
                 </div>
                 <div className="descriptionContainer">

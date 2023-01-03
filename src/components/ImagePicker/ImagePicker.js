@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Button from '../Buttons/Button';
 import PropTypes from 'prop-types';
 import Croppie from 'croppie';
 import "croppie/croppie.css"
 import {styled} from "@mui/material";
+import {PlaceContext} from "../NewPlace/NewPlace";
 
 const ImageUploadInput = styled('input')`
   position: absolute;
@@ -15,7 +16,8 @@ const ImageUploadInput = styled('input')`
 `;
 
 const ImagePicker = (props) => {
-    const {viewport, handleImage} = props
+    const {handleImage} = useContext(PlaceContext);
+    const {viewport} = props
     const [croppie, setCroppie] = useState(null);
     const [file, setFile] = useState(null);
 
@@ -83,12 +85,13 @@ const ImagePicker = (props) => {
                 width: viewport.width
             }
         }).then((blob) => {
-            const newFile = new File([blob], file.fileName, {type: file.file.type});
-            setFile({
+            const newBlob = new File([blob], file.fileName, {type: file.file.type});
+            let croppedFile = {
                 ...file,
-                file: blob
-            })
-            handleImage(file);
+                file: newBlob
+            }
+            setFile(croppedFile);
+            handleImage(croppedFile);
         })
     }
 
@@ -114,7 +117,6 @@ const ImagePicker = (props) => {
 ImagePicker.propTypes = {
     viewport: PropTypes.object.isRequired,
     file: PropTypes.object,
-    handleImage: PropTypes.func.isRequired,
 }
 
 export default ImagePicker;
