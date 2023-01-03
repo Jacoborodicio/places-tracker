@@ -11,6 +11,7 @@ import {FavouriteStart} from "../Buttons/FavouriteStart";
 import {faThumbsUp} from "@fortawesome/free-solid-svg-icons/faThumbsUp";
 import axios from "axios";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
+import {baseApiUrl} from "../../helpers/constants";
 
 const CardContainer = styled('div')`
   height: 100%;
@@ -106,9 +107,10 @@ const DashboardCard = ({place, handleDelete}) => {
         <CardContainer onClick={() => history.push(`/details/${_id}`)}>
             <CardHeader>
                 <CardLogo>
-                    {/*<img src={image ? process.env["REACT_APP_API_URL"] + image : DefaultImg} alt={imageDescription} />*/}
-                    <img src={image ? 'https://jacoborodicio.com/api/v1/' + image : DefaultImg} alt={imageDescription} />
-                    {/*<img src={image ? 'https://jacoborodicio.com:9000/places-tracker/' + image : DefaultImg} alt={imageDescription} />*/}
+                    <img src={image ? `${baseApiUrl + '/' + image}` : DefaultImg} alt={imageDescription} />
+                    {/*This next line was working on release, production*/}
+                    {/*<img src={image ? 'https://jacoborodicio.com/api/v1/' + image : DefaultImg} alt={imageDescription} />*/}
+
                     <ImageFooter>
                         <h3>Bayern</h3>
                     </ImageFooter>

@@ -40,7 +40,7 @@ const Header = ({actionSection}) => {
         </HeaderContainer>
     )
 }
-Header.PropTypes = {
+Header.propTypes = {
     actionSection: PropTypes.object
 }
 Header.defaultProps = {

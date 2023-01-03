@@ -53,6 +53,11 @@ const ImagePicker = (props) => {
             fileName: uploadedFile.name,
             preview: URL.createObjectURL(newFile)
         })
+        handleImage({
+            file: newFile,
+            fileName: uploadedFile.name,
+            preview: URL.createObjectURL(newFile)
+        })
     }
     const calcViewport = (viewport) => {
         if (viewport.height <= 32) {
@@ -70,7 +75,7 @@ const ImagePicker = (props) => {
         }
     }
 
-    const handleSelect = () => {
+    const handleCrop = () => {
         croppie.result({
             type: 'blob',
             size: {
@@ -99,7 +104,7 @@ const ImagePicker = (props) => {
             <div id={'image-helper'} />
             {file?.preview && croppie && (
                 <div style={{width: '100%', display: 'flex', justifyContent: 'center', marginBottom: '.5rem'}}>
-                    <Button title='Crop' onClick={handleSelect} style={{width: '11.5rem'}}/>
+                    <Button title='Crop' onClick={handleCrop} style={{width: '11.5rem'}}/>
                 </div>
             )}
         </div>

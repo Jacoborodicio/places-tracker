@@ -14,12 +14,7 @@ const developConfig = {
         static: [{
             directory: path.join(__dirname, '../dist'),
             publicPath: '/',
-        },
-            // {
-            //     directory: path.join(__dirname, '../public'),
-            //     publicPath: '/'
-            // }
-            ],
+        }],
         historyApiFallback: true,
         compress: true,
         hot: true

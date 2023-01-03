@@ -23,33 +23,12 @@ const NewPlace = () => {
             [name]: value
         })
     }
-    // const handleSave = async () => {
-    //     try {
-    //         let formData = new FormData();
-    //         formData.append(
-    //             'placeImage',
-    //             imageData.file,
-    //             imageData.name
-    //         );
-    //         const finalPlaceInfo = JSON.stringify(place);
-    //         formData.append('placeData', `${finalPlaceInfo}`);
-    //         const response = await axios.post('http://localhost:9000/api/v1/places', formData, {
-    //             headers: {
-    //                 'Content-Type': 'multipart/form-data',
-    //                 'Accept': '*/*',
-    //                 'Access-Control-Allow-Origin': '*',
-    //                 'Access-Control-Allow-Headers': '*',
-    //             }
-    //         });
-    //         history.push('/');
-    //     } catch (error) {
-    //         console.log('%cFile: NewPlace.js, Function: handleSave, Line 20 error: ', 'color: pink', error);
-    //     }
-    // }
 
     const handleSave = async () => {
+
         let formData = new FormData();
-        formData.append(
+        console.log('%cFile: NewPlace.js, Function: handleSave, Line 30 imageData: ', 'color: pink', imageData);
+        Object.keys(imageData).length > 0 && formData.append(
             'placeImage',
             imageData.file,
             imageData.name
@@ -60,6 +39,7 @@ const NewPlace = () => {
     }
 
     const handleImage = imageData => {
+        console.log('%cFile: NewPlace.js, Function: handleImage, Line 42 imageData: ', 'color: pink', imageData);
         setImageData(imageData);
     }
     return (

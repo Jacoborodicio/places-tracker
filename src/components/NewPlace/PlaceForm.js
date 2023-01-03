@@ -120,7 +120,7 @@ export const PlaceForm = () => {
     )
 }
 
-PlaceForm.PropTypes = {
+PlaceForm.propTypes = {
     place: PropTypes.shape({
         imageDescription: PropTypes.string,
         name: PropTypes.string,

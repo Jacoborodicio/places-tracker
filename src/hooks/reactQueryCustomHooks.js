@@ -1,9 +1,7 @@
 import {useMutation, useQueryClient} from "react-query";
 import axios from "axios";
-
+import {baseApiUrl} from "../helpers/constants";
 export const setLocationPath = path => window.location.href = path;
-// const baseApiUrl = process.env["REACT_APP_API_URL "];
-const baseApiUrl = 'https://jacoborodicio.com/api/v1';
 
 const handleDeletePlace = id => axios.delete(`${baseApiUrl}/places/${id}`);
 const handleAddPlace = placeFormData => axios.post(`${baseApiUrl}/places`, placeFormData, {
@@ -23,7 +21,7 @@ export const useDeletePlace = (queryKey) => {
 
 export const useAddPlace = () => {
     return useMutation(handleAddPlace, {
-        onSuccess: () => setLocationPath('/places/'),
+        onSuccess: () => (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ? null : setLocationPath('/places/'),
         onError: () => console.log('%c Error', 'color: #ecb1f2; font-style:italic')
     })
 }

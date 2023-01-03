@@ -29,7 +29,11 @@ const myCache = createCache({
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('https://jacoborodicio.com.com/places/service-worker.js')
+        let registerUrl = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') ?
+            'http://localhost:3000/service-worker.js' :
+            'https://jacoborodicio.com/service-worker.js';
+        console.log('%cFile: App.js, Function: register, Line 35 registerUrl: ', 'color: pink', registerUrl);
+        navigator.serviceWorker.register(registerUrl)
             .then(registration => {
                 console.log('File: index.js, Function: ServiceWorker registration, Line 7 --> SW registered, registration: ', registration);
             }).catch(registrationError => console.log('File: index.js, Function: SW registration error: , Line 8 --> registrationError: ', registrationError));

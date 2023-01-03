@@ -14,6 +14,7 @@ import DefaultImg from '../../images/defaultCodeImg.png';
 import {useQuery} from "react-query";
 import {getPlaceById} from "../../helpers/api";
 import {useDeletePlace} from "../../hooks/reactQueryCustomHooks";
+import {baseApiUrl} from "../../helpers/constants";
 
 const TopSection = styled('div')`
   display: flex;
@@ -107,9 +108,9 @@ const Details = () => {
             <Header actionSection={{start: <Button secondary back />, middle: <h1>{place['name']}</h1>, end: <Button secondary onClick={handleDelete} icon={<FontAwesomeIcon icon={faTrash} color={'#90DCB3'} title='Delete' />} /> }} />
             <TopSection>
                 <div className={'imgSection'}>
-                    {/*<img src={place?.image ? process.env["REACT_APP_API_URL"] + place.image : DefaultImg} alt={place.imageDescription} />*/}
-                    <img src={place?.image ? 'https://jacoborodicio.com/api/v1/' + place.image : DefaultImg} alt={place.imageDescription} />
-                    {/*<img src={place?.image ? 'https://jacoborodicio.com:9000/places-tracker/' + place.image : DefaultImg} alt={place.imageDescription} />*/}
+                    <img src={place?.image ? `${baseApiUrl + '/' + place.image}` : DefaultImg} alt={place.imageDescription} />
+                    {/*This next line was working in release, production*/}
+                    {/*<img src={place?.image ? 'https://jacoborodicio.com/api/v1/' + place.image : DefaultImg} alt={place.imageDescription} />*/}
                     <div className={'footerImageSection'}>
                         <p className='text'>{place?.imageDescription}</p>
                     </div>
