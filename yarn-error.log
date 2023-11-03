@@ -1,0 +1,95 @@
+Arguments: 
+  /opt/homebrew/Cellar/node/20.5.1/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js
+
+PATH: 
+  /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/jacoborodiciogonzalez/.cargo/bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  20.5.1
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: https://npm.fontawesome.com/@fortawesome%2ffontawesome-svg-core: authentication required
+      at params.callback [as _callback] (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:66145:18)
+      at self.callback (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:140890:22)
+      at Request.emit (node:events:514:28)
+      at Request.<anonymous> (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:141862:10)
+      at Request.emit (node:events:514:28)
+      at IncomingMessage.<anonymous> (/opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:628:28)
+      at IncomingMessage.emit (node:events:526:35)
+      at endReadableNT (node:internal/streams/readable:1376:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  {
+    "name": "places",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "homepage": "/places",
+    "scripts": {
+      "build": "webpack --mode=production --config config/webpack.prod.js",
+      "start": "webpack serve --config config/webpack.dev.js"
+    },
+    "dependencies": {
+      "@emotion/cache": "^11.7.1",
+      "@emotion/react": "^11.7.1",
+      "@emotion/styled": "^11.6.0",
+      "@fortawesome/fontawesome-svg-core": "^1.2.36",
+      "@fortawesome/free-solid-svg-icons": "^5.15.4",
+      "@fortawesome/react-fontawesome": "^0.1.16",
+      "@mui/material": "^5.2.5",
+      "@react-spring/web": "^9.3.2",
+      "@reduxjs/toolkit": "^1.7.1",
+      "axios": "^0.27.2",
+      "core-js": "^3.20.0",
+      "croppie": "^2.6.5",
+      "react": "^17.0.2",
+      "react-dom": "^17.0.2",
+      "react-query": "^3.39.2",
+      "react-redux": "^7.2.6",
+      "react-router-dom": "5.2.0",
+      "redux": "^4.1.2",
+      "stylis": "^4.0.13"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.16.5",
+      "@babel/preset-env": "^7.16.5",
+      "@babel/preset-react": "^7.16.5",
+      "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
+      "babel-loader": "^8.2.3",
+      "clean-webpack-plugin": "^4.0.0",
+      "copy-webpack-plugin": "^10.2.0",
+      "css-loader": "^6.5.1",
+      "html-webpack-plugin": "^5.5.0",
+      "mini-css-extract-plugin": "^2.4.5",
+      "prop-types": "latest",
+      "react-refresh": "^0.11.0",
+      "redux-devtools": "^3.7.0",
+      "sass": "^1.45.0",
+      "sass-loader": "^12.4.0",
+      "style-loader": "^3.3.1",
+      "webpack": "^5.65.0",
+      "webpack-cli": "^4.9.1",
+      "webpack-dev-server": "^4.6.0",
+      "webpack-merge": "^5.8.0",
+      "workbox-webpack-plugin": "^6.4.2"
+    },
+    "browserslist": [
+      "> 0.25%",
+      "not dead",
+      "not ie 11"
+    ]
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

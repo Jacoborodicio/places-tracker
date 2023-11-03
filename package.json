@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "homepage": "/places",
+  "homepage": "/places-tracker",
   "scripts": {
     "build": "webpack --mode=production --config config/webpack.prod.js",
     "start": "webpack serve --config config/webpack.dev.js"
